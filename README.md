@@ -96,7 +96,8 @@ and holds `fig7_real_vs_sim.png`, `tables/real_vs_sim.csv`, `metacog_traces.json
 read only from the environment and never written to the cache.
 
 A static **Next.js** dashboard over these tables and traces lives in a separate
-sibling repository, `skill-metacognition-dashboard`:
+sibling repository,
+[`skill-metacognition-dashboard`](https://github.com/joshfermano/skill-metacognition-dashboard):
 
 ```bash
 cd ../skill-metacognition-dashboard && npm install && npm run build   # static export to out/
