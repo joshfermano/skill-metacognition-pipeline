@@ -1,0 +1,11 @@
+,real,sim,family
+code-locate-spawn,1.0,1.0,code
+code-locate-loselife,1.0,0.0,code
+code-grep-spr,1.0,1.0,code
+code-count-funcs,1.0,0.0,code
+code-count-callers,1.0,1.0,code
+code-trace-collision,1.0,1.0,code
+code-explain-update-enemies,0.0,0.0,code
+code-ticket-multiplier,0.0,0.0,code
+nd-Asm-→I-0,0.0,1.0,logic
+nd-Asm-MP-0,0.0,1.0,logic

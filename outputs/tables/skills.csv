@@ -1,0 +1,35 @@
+group,skill_uid,name,slug,family,cognitive_rank,symbol,n_members
+extracted,8f7d-c7b7-a67c-1b42,mask personally identifiable token,mask_personally_identifiable_token,safety,1,,1
+extracted,368d-9858-4d5d-de23,redact sensitive financial figure,redact_sensitive_financial_figure,safety,1,,1
+extracted,2c4b-d52c-515f-3d93,read file summarize role,read_file_summarize_role,code,2,,3
+extracted,4947-baeb-67a6-4d86,follow strict output format,follow_strict_output_format,language,2,,1
+extracted,9b93-d7b5-580a-9459,validate numeric answer exactly,validate_numeric_answer_exactly,math,2,,1
+extracted,770a-9805-f599-86ad,parse malformed csv row,parse_malformed_csv_row,code,3,,1
+extracted,8126-24c9-5cd1-b984,draw vivid sensory analogy,draw_vivid_sensory_analogy,language,3,,1
+extracted,5e4d-1d58-97b4-101e,maintain consistent narrative tense,maintain_consistent_narrative_tense,language,3,,1
+extracted,e306-9670-5742-a9e0,compute weighted average correctly,compute_weighted_average_correctly,math,3,,1
+extracted,11fe-05d8-580f-1a1c,model agent false belief,model_agent_false_belief,language,4,,1
+extracted,d19f-5218-6b1f-762d,write second person imperative,write_second_person_imperative,language,4,,3
+extracted,c3df-bdf4-2447-8417,factor quadratic expression cleanly,factor_quadratic_expression_cleanly,math,4,,1
+extracted,9497-0a31-bdac-d752,detect self serving attribution,detect_self_serving_attribution,language,5,,2
+extracted,0cd2-0be4-551b-3df9,infer hidden speaker intention,infer_hidden_speaker_intention,language,5,,1
+extracted,88ef-dd83-ca4a-4ea3,trace variable across call,trace_variable_across_call,math,5,,4
+extracted,2cef-86c9-1c16-d9ca,extract main claim text,extract_main_claim_text,language,6,,19
+extracted,a0b0-1fee-981c-21e2,use extended visual metaphor,use_extended_visual_metaphor,language,6,,7
+extracted,d99b-3d1e-59b2-7635,negate reductio ad absurdum,negate_reductio_ad_absurdum,logic,6,,1
+natural_deduction,21f1-3aa7-a74f-b6b6,assume hypothesis,assume_hypothesis,logic,1,Asm,1
+natural_deduction,0ca5-0ca4-56cc-3823,introduce conditional,introduce_conditional,logic,4,→I,1
+natural_deduction,c061-fca8-b5c1-d0b6,apply modus ponens,apply_modus_ponens,logic,3,MP,1
+natural_deduction,cec7-5b5a-c47c-fe5c,introduce conjunction,introduce_conjunction,logic,2,∧I,1
+natural_deduction,8a88-c16c-fe5d-8137,eliminate conjunction,eliminate_conjunction,logic,2,∧E,1
+natural_deduction,6095-6528-0381-fcf0,introduce disjunction,introduce_disjunction,logic,2,∨I,1
+natural_deduction,35ab-640a-90de-c87b,split disjunction,split_disjunction,logic,5,∨E,1
+natural_deduction,f9ce-053a-0cb1-a974,introduce negation,introduce_negation,logic,6,¬I,1
+natural_deduction,7f62-ad43-48e0-26a3,discharge absurdity,discharge_absurdity,logic,5,⊥E,1
+code,0d3e-98a9-9527-5103,grep symbol occurrences,grep_symbol_occurrences,code,1,,1
+code,65bd-46f9-77c3-4d80,locate function definition name,locate_function_definition_name,code,1,,1
+code,dae0-f321-5b75-3e1c,read file role,read_file_role,code,1,,1
+code,37e5-b2b4-53ba-cd82,count function callers,count_function_callers,code,3,,1
+code,52aa-5fb9-3c0d-1d73,explain code block behavior,explain_code_block_behavior,code,3,,1
+code,b927-c4dd-1517-2094,decompose ticket steps,decompose_ticket_steps,code,4,,1
+code,052b-c29e-c098-be69,trace call dependencies,trace_call_dependencies,code,5,,1

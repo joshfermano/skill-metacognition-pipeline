@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets — never commit the real .env (.env.example is the tracked template)
+.env
+.env.local
+
+# OS / editor
+.DS_Store
+*.log
+
+# NOTE: outputs/ is intentionally tracked — the figures, tables, summary.json,
+# and the cached real run (outputs/real/raw_cache.json) are deliverables that
+# the report and the separate dashboard repo consume. Never commit secrets;
+# GROQ_API_KEY is read from the environment and is never written to any file.

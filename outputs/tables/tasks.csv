@@ -1,0 +1,1060 @@
+task_uid,label,family,k,difficulty,base_uplift,skill_uids,prompt
+da76-da7e-65b7-f062,nd-Asm-→I-0,logic,2,1.205,0.6,21f1-3aa7-a74f-b6b6|0ca5-0ca4-56cc-3823,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: Asm, →I)."
+f52f-2ded-2168-67ad,nd-Asm-→I-1,logic,2,0.833,0.6,21f1-3aa7-a74f-b6b6|0ca5-0ca4-56cc-3823,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: Asm, →I)."
+740d-4b32-3294-b325,nd-Asm-→I-2,logic,2,0.681,0.6,21f1-3aa7-a74f-b6b6|0ca5-0ca4-56cc-3823,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, →I)."
+d16e-5fb8-a1b1-e6c3,nd-Asm-→I-3,logic,2,0.988,0.6,21f1-3aa7-a74f-b6b6|0ca5-0ca4-56cc-3823,"Using natural deduction, prove P from premises P, Q. Cite the inference rule at each line (rules to use: Asm, →I)."
+fb09-f026-63dc-a392,nd-Asm-→I-4,logic,2,0.348,0.6,21f1-3aa7-a74f-b6b6|0ca5-0ca4-56cc-3823,"Using natural deduction, prove Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, →I)."
+1068-be9f-2107-be38,nd-Asm-→I-5,logic,2,0.592,0.6,21f1-3aa7-a74f-b6b6|0ca5-0ca4-56cc-3823,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: Asm, →I)."
+5e64-73e7-df8b-a4d7,nd-Asm-MP-0,logic,2,0.818,0.6,21f1-3aa7-a74f-b6b6|c061-fca8-b5c1-d0b6,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: Asm, MP)."
+4bb6-b9c7-627f-039d,nd-Asm-MP-1,logic,2,0.644,0.6,21f1-3aa7-a74f-b6b6|c061-fca8-b5c1-d0b6,"Using natural deduction, prove Q from premises P&Q. Cite the inference rule at each line (rules to use: Asm, MP)."
+5ed6-07fc-2017-02ef,nd-Asm-MP-2,logic,2,0.966,0.6,21f1-3aa7-a74f-b6b6|c061-fca8-b5c1-d0b6,"Using natural deduction, prove P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: Asm, MP)."
+99a5-20be-613d-82f7,nd-Asm-MP-3,logic,2,0.388,0.6,21f1-3aa7-a74f-b6b6|c061-fca8-b5c1-d0b6,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: Asm, MP)."
+9adf-516f-21e9-f1bd,nd-Asm-MP-4,logic,2,0.434,0.6,21f1-3aa7-a74f-b6b6|c061-fca8-b5c1-d0b6,"Using natural deduction, prove Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: Asm, MP)."
+f3d9-ac77-bc06-5a91,nd-Asm-MP-5,logic,2,0.024,0.6,21f1-3aa7-a74f-b6b6|c061-fca8-b5c1-d0b6,"Using natural deduction, prove P&Q from premises P, Q. Cite the inference rule at each line (rules to use: Asm, MP)."
+6d35-8b62-1318-2d78,nd-Asm-∧I-0,logic,2,-0.052,0.6,21f1-3aa7-a74f-b6b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove P from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∧I)."
+8251-b2a7-edca-50aa,nd-Asm-∧I-1,logic,2,0.35,0.6,21f1-3aa7-a74f-b6b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: Asm, ∧I)."
+3865-1ed7-4e28-8aa4,nd-Asm-∧I-2,logic,2,0.085,0.6,21f1-3aa7-a74f-b6b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∧I)."
+b73e-3717-861e-7b8a,nd-Asm-∧I-3,logic,2,0.318,0.6,21f1-3aa7-a74f-b6b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∧I)."
+6698-dd23-11ec-4eb3,nd-Asm-∧I-4,logic,2,0.048,0.6,21f1-3aa7-a74f-b6b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∧I)."
+d15e-7d8c-302d-51e1,nd-Asm-∧I-5,logic,2,0.686,0.6,21f1-3aa7-a74f-b6b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∧I)."
+47d0-5dab-677f-dedf,nd-Asm-∧E-0,logic,2,0.096,0.6,21f1-3aa7-a74f-b6b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ∧E)."
+d980-19fc-dce1-43a6,nd-Asm-∧E-1,logic,2,-0.148,0.6,21f1-3aa7-a74f-b6b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove Q|R from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∧E)."
+f772-0481-b0d8-85b7,nd-Asm-∧E-2,logic,2,0.346,0.6,21f1-3aa7-a74f-b6b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove P from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∧E)."
+6db3-ccde-5402-37db,nd-Asm-∧E-3,logic,2,0.724,0.6,21f1-3aa7-a74f-b6b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, ∧E)."
+bf7a-9f26-fbc5-88b6,nd-Asm-∧E-4,logic,2,0.607,0.6,21f1-3aa7-a74f-b6b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∧E)."
+a38c-6946-1ae6-08a2,nd-Asm-∧E-5,logic,2,0.136,0.6,21f1-3aa7-a74f-b6b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∧E)."
+1c3f-b49a-cf2f-54f2,nd-Asm-∨I-0,logic,2,0.006,0.6,21f1-3aa7-a74f-b6b6|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∨I)."
+0901-c8b8-c5df-1d34,nd-Asm-∨I-1,logic,2,0.641,0.6,21f1-3aa7-a74f-b6b6|6095-6528-0381-fcf0,"Using natural deduction, prove P from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ∨I)."
+2c1d-3964-fb00-c890,nd-Asm-∨I-2,logic,2,0.358,0.6,21f1-3aa7-a74f-b6b6|6095-6528-0381-fcf0,"Using natural deduction, prove P&Q from premises P, Q. Cite the inference rule at each line (rules to use: Asm, ∨I)."
+e30c-ed39-c05d-1d46,nd-Asm-∨I-3,logic,2,0.243,0.6,21f1-3aa7-a74f-b6b6|6095-6528-0381-fcf0,"Using natural deduction, prove Q|R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, ∨I)."
+5b71-dd42-de96-0df5,nd-Asm-∨I-4,logic,2,0.744,0.6,21f1-3aa7-a74f-b6b6|6095-6528-0381-fcf0,"Using natural deduction, prove Q|R from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∨I)."
+fd72-12c4-5234-cc7b,nd-Asm-∨I-5,logic,2,-0.514,0.6,21f1-3aa7-a74f-b6b6|6095-6528-0381-fcf0,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ∨I)."
+955c-7ad8-566c-9cba,nd-Asm-∨E-0,logic,2,1.681,0.6,21f1-3aa7-a74f-b6b6|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ∨E)."
+d340-a825-d0a5-8578,nd-Asm-∨E-1,logic,2,0.181,0.6,21f1-3aa7-a74f-b6b6|35ab-640a-90de-c87b,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∨E)."
+263f-9f8e-fdde-9435,nd-Asm-∨E-2,logic,2,0.682,0.6,21f1-3aa7-a74f-b6b6|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, ∨E)."
+c06b-e3ee-c33a-2808,nd-Asm-∨E-3,logic,2,0.77,0.6,21f1-3aa7-a74f-b6b6|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, ∨E)."
+c7ae-f812-4b02-4c5e,nd-Asm-∨E-4,logic,2,1.132,0.6,21f1-3aa7-a74f-b6b6|35ab-640a-90de-c87b,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ∨E)."
+7c13-3622-a31c-35c8,nd-Asm-∨E-5,logic,2,0.733,0.6,21f1-3aa7-a74f-b6b6|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ∨E)."
+5130-b5b2-9533-4ee4,nd-Asm-¬I-0,logic,2,1.206,0.6,21f1-3aa7-a74f-b6b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q|R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, ¬I)."
+0911-d1c6-41f3-facd,nd-Asm-¬I-1,logic,2,2.013,0.6,21f1-3aa7-a74f-b6b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ¬I)."
+d857-d6c5-89fb-ca4f,nd-Asm-¬I-2,logic,2,0.82,0.6,21f1-3aa7-a74f-b6b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ¬I)."
+03d8-cada-b9b2-2ab9,nd-Asm-¬I-3,logic,2,1.958,0.6,21f1-3aa7-a74f-b6b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: Asm, ¬I)."
+e24f-1c5e-0dbd-5c7d,nd-Asm-¬I-4,logic,2,1.245,0.6,21f1-3aa7-a74f-b6b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ¬I)."
+b481-5dfd-4b6c-31e6,nd-Asm-¬I-5,logic,2,0.906,0.6,21f1-3aa7-a74f-b6b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove P from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ¬I)."
+b274-bfaf-c014-e7c5,nd-Asm-⊥E-0,logic,2,0.917,0.6,21f1-3aa7-a74f-b6b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: Asm, ⊥E)."
+be74-270c-5974-79d2,nd-Asm-⊥E-1,logic,2,0.753,0.6,21f1-3aa7-a74f-b6b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: Asm, ⊥E)."
+e340-9d66-7cac-e74d,nd-Asm-⊥E-2,logic,2,2.042,0.6,21f1-3aa7-a74f-b6b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P&Q. Cite the inference rule at each line (rules to use: Asm, ⊥E)."
+65aa-878f-c07a-9749,nd-Asm-⊥E-3,logic,2,1.106,0.6,21f1-3aa7-a74f-b6b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: Asm, ⊥E)."
+4a72-b5e9-d293-e220,nd-Asm-⊥E-4,logic,2,1.203,0.6,21f1-3aa7-a74f-b6b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove P&Q from premises ~~P. Cite the inference rule at each line (rules to use: Asm, ⊥E)."
+4174-ce08-8f5b-9d56,nd-Asm-⊥E-5,logic,2,1.195,0.6,21f1-3aa7-a74f-b6b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P, Q. Cite the inference rule at each line (rules to use: Asm, ⊥E)."
+b78b-7e72-cadc-d4e6,nd-→I-MP-0,logic,2,1.389,0.6,0ca5-0ca4-56cc-3823|c061-fca8-b5c1-d0b6,"Using natural deduction, prove P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, MP)."
+845a-8c7a-1de1-6560,nd-→I-MP-1,logic,2,0.876,0.6,0ca5-0ca4-56cc-3823|c061-fca8-b5c1-d0b6,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: →I, MP)."
+4503-e9e2-7d24-e9f1,nd-→I-MP-2,logic,2,1.623,0.6,0ca5-0ca4-56cc-3823|c061-fca8-b5c1-d0b6,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: →I, MP)."
+5b05-8304-3ac6-8449,nd-→I-MP-3,logic,2,1.38,0.6,0ca5-0ca4-56cc-3823|c061-fca8-b5c1-d0b6,"Using natural deduction, prove P from premises P&Q. Cite the inference rule at each line (rules to use: →I, MP)."
+93d9-3670-46b5-7fa3,nd-→I-MP-4,logic,2,1.387,0.6,0ca5-0ca4-56cc-3823|c061-fca8-b5c1-d0b6,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: →I, MP)."
+a216-b06e-1c05-7421,nd-→I-MP-5,logic,2,1.17,0.6,0ca5-0ca4-56cc-3823|c061-fca8-b5c1-d0b6,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: →I, MP)."
+af45-111a-38d3-3904,nd-→I-∧I-0,logic,2,1.077,0.6,0ca5-0ca4-56cc-3823|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∧I)."
+3d86-950b-55cd-2d3a,nd-→I-∧I-1,logic,2,1.173,0.6,0ca5-0ca4-56cc-3823|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∧I)."
+4116-f441-1dce-62af,nd-→I-∧I-2,logic,2,0.759,0.6,0ca5-0ca4-56cc-3823|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: →I, ∧I)."
+9080-c89a-fa41-ff7f,nd-→I-∧I-3,logic,2,0.998,0.6,0ca5-0ca4-56cc-3823|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q|R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∧I)."
+fcac-62a3-4d69-2d08,nd-→I-∧I-4,logic,2,1.553,0.6,0ca5-0ca4-56cc-3823|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q|R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∧I)."
+868b-f7c2-817a-453e,nd-→I-∧I-5,logic,2,0.492,0.6,0ca5-0ca4-56cc-3823|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: →I, ∧I)."
+5a02-34ab-006d-e1be,nd-→I-∧E-0,logic,2,1.092,0.6,0ca5-0ca4-56cc-3823|8a88-c16c-fe5d-8137,"Using natural deduction, prove P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∧E)."
+0081-b400-b535-d431,nd-→I-∧E-1,logic,2,0.573,0.6,0ca5-0ca4-56cc-3823|8a88-c16c-fe5d-8137,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: →I, ∧E)."
+7751-448b-f0bf-1384,nd-→I-∧E-2,logic,2,1.313,0.6,0ca5-0ca4-56cc-3823|8a88-c16c-fe5d-8137,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: →I, ∧E)."
+c69c-8471-98e7-fb4a,nd-→I-∧E-3,logic,2,1.376,0.6,0ca5-0ca4-56cc-3823|8a88-c16c-fe5d-8137,"Using natural deduction, prove R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: →I, ∧E)."
+f457-2b21-4b24-ed8a,nd-→I-∧E-4,logic,2,0.722,0.6,0ca5-0ca4-56cc-3823|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∧E)."
+92e4-55c7-5e66-7563,nd-→I-∧E-5,logic,2,0.791,0.6,0ca5-0ca4-56cc-3823|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: →I, ∧E)."
+30d0-b9af-d2a5-dbe0,nd-→I-∨I-0,logic,2,0.813,0.6,0ca5-0ca4-56cc-3823|6095-6528-0381-fcf0,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: →I, ∨I)."
+b1ce-5d7c-2802-c76f,nd-→I-∨I-1,logic,2,0.831,0.6,0ca5-0ca4-56cc-3823|6095-6528-0381-fcf0,"Using natural deduction, prove P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∨I)."
+14b9-152e-9df0-0e8d,nd-→I-∨I-2,logic,2,0.535,0.6,0ca5-0ca4-56cc-3823|6095-6528-0381-fcf0,"Using natural deduction, prove Q|R from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∨I)."
+03aa-3c55-b19b-bbae,nd-→I-∨I-3,logic,2,0.784,0.6,0ca5-0ca4-56cc-3823|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∨I)."
+bf5f-f698-e1f7-e041,nd-→I-∨I-4,logic,2,0.325,0.6,0ca5-0ca4-56cc-3823|6095-6528-0381-fcf0,"Using natural deduction, prove P from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∨I)."
+f3ca-5ba9-15d5-cf0a,nd-→I-∨I-5,logic,2,0.891,0.6,0ca5-0ca4-56cc-3823|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: →I, ∨I)."
+6f96-667b-5eb2-5076,nd-→I-∨E-0,logic,2,1.437,0.6,0ca5-0ca4-56cc-3823|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: →I, ∨E)."
+b814-41bd-92db-2ac7,nd-→I-∨E-1,logic,2,1.051,0.6,0ca5-0ca4-56cc-3823|35ab-640a-90de-c87b,"Using natural deduction, prove P&Q from premises P, Q. Cite the inference rule at each line (rules to use: →I, ∨E)."
+e733-c888-87cf-afa9,nd-→I-∨E-2,logic,2,2.364,0.6,0ca5-0ca4-56cc-3823|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ∨E)."
+7951-702f-a4aa-c252,nd-→I-∨E-3,logic,2,1.814,0.6,0ca5-0ca4-56cc-3823|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∨E)."
+5f72-8f9d-f7a0-8db4,nd-→I-∨E-4,logic,2,2.042,0.6,0ca5-0ca4-56cc-3823|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∨E)."
+3a28-b471-39bb-1419,nd-→I-∨E-5,logic,2,1.622,0.6,0ca5-0ca4-56cc-3823|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P, P->Q. Cite the inference rule at each line (rules to use: →I, ∨E)."
+81f6-e245-356c-3346,nd-→I-¬I-0,logic,2,1.787,0.6,0ca5-0ca4-56cc-3823|f9ce-053a-0cb1-a974,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: →I, ¬I)."
+d20f-6549-72f3-fc60,nd-→I-¬I-1,logic,2,1.552,0.6,0ca5-0ca4-56cc-3823|f9ce-053a-0cb1-a974,"Using natural deduction, prove P from premises P, Q. Cite the inference rule at each line (rules to use: →I, ¬I)."
+cb09-843d-24de-29aa,nd-→I-¬I-2,logic,2,1.939,0.6,0ca5-0ca4-56cc-3823|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: →I, ¬I)."
+bd5a-39d2-e333-3d47,nd-→I-¬I-3,logic,2,1.316,0.6,0ca5-0ca4-56cc-3823|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: →I, ¬I)."
+ad8a-0526-ef2f-d732,nd-→I-¬I-4,logic,2,1.777,0.6,0ca5-0ca4-56cc-3823|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: →I, ¬I)."
+799a-2c9c-bcbc-c77c,nd-→I-¬I-5,logic,2,1.855,0.6,0ca5-0ca4-56cc-3823|f9ce-053a-0cb1-a974,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: →I, ¬I)."
+44a3-0716-5d5f-2eaa,nd-→I-⊥E-0,logic,2,1.209,0.6,0ca5-0ca4-56cc-3823|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: →I, ⊥E)."
+5d85-b45d-8071-5722,nd-→I-⊥E-1,logic,2,1.689,0.6,0ca5-0ca4-56cc-3823|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ⊥E)."
+6bcf-5ed1-9aaf-2732,nd-→I-⊥E-2,logic,2,2.22,0.6,0ca5-0ca4-56cc-3823|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P, Q. Cite the inference rule at each line (rules to use: →I, ⊥E)."
+cb98-2b0d-b717-8aea,nd-→I-⊥E-3,logic,2,1.756,0.6,0ca5-0ca4-56cc-3823|7f62-ad43-48e0-26a3,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: →I, ⊥E)."
+5e13-e529-5da7-7146,nd-→I-⊥E-4,logic,2,1.381,0.6,0ca5-0ca4-56cc-3823|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: →I, ⊥E)."
+f0d9-1be4-468d-9f3f,nd-→I-⊥E-5,logic,2,1.576,0.6,0ca5-0ca4-56cc-3823|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: →I, ⊥E)."
+220f-48e3-22a8-dede,nd-MP-∧I-0,logic,2,0.36,0.6,c061-fca8-b5c1-d0b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ∧I)."
+007f-eff5-ddea-9b53,nd-MP-∧I-1,logic,2,0.226,0.6,c061-fca8-b5c1-d0b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q|R from premises P&Q. Cite the inference rule at each line (rules to use: MP, ∧I)."
+5221-d7bc-0ad5-0625,nd-MP-∧I-2,logic,2,0.415,0.6,c061-fca8-b5c1-d0b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove P from premises P&Q. Cite the inference rule at each line (rules to use: MP, ∧I)."
+5797-ccb9-ba59-c19c,nd-MP-∧I-3,logic,2,1.131,0.6,c061-fca8-b5c1-d0b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q|R from premises P, Q. Cite the inference rule at each line (rules to use: MP, ∧I)."
+9464-d6f3-c209-e08f,nd-MP-∧I-4,logic,2,0.675,0.6,c061-fca8-b5c1-d0b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove P&Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ∧I)."
+df1b-18ab-8308-4f0a,nd-MP-∧I-5,logic,2,1.176,0.6,c061-fca8-b5c1-d0b6|cec7-5b5a-c47c-fe5c,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∧I)."
+faa6-a897-4c45-afd7,nd-MP-∧E-0,logic,2,0.942,0.6,c061-fca8-b5c1-d0b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∧E)."
+400d-5852-9b97-309a,nd-MP-∧E-1,logic,2,0.584,0.6,c061-fca8-b5c1-d0b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove Q from premises P&Q. Cite the inference rule at each line (rules to use: MP, ∧E)."
+3349-1faf-c7b0-8b82,nd-MP-∧E-2,logic,2,0.382,0.6,c061-fca8-b5c1-d0b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∧E)."
+d4c3-1b15-9e3e-f9eb,nd-MP-∧E-3,logic,2,0.661,0.6,c061-fca8-b5c1-d0b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: MP, ∧E)."
+db8e-de45-4f20-4574,nd-MP-∧E-4,logic,2,0.603,0.6,c061-fca8-b5c1-d0b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: MP, ∧E)."
+ca80-6f21-fd89-9c26,nd-MP-∧E-5,logic,2,0.557,0.6,c061-fca8-b5c1-d0b6|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ∧E)."
+7a75-0493-6f7c-865e,nd-MP-∨I-0,logic,2,0.775,0.6,c061-fca8-b5c1-d0b6|6095-6528-0381-fcf0,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∨I)."
+6cc6-59e6-7048-e946,nd-MP-∨I-1,logic,2,1.199,0.6,c061-fca8-b5c1-d0b6|6095-6528-0381-fcf0,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∨I)."
+abc3-215d-4c7e-9b05,nd-MP-∨I-2,logic,2,0.363,0.6,c061-fca8-b5c1-d0b6|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P, P->Q. Cite the inference rule at each line (rules to use: MP, ∨I)."
+24f7-0801-5ada-1d51,nd-MP-∨I-3,logic,2,0.363,0.6,c061-fca8-b5c1-d0b6|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ∨I)."
+e2d3-a2b0-24c5-0e3a,nd-MP-∨I-4,logic,2,0.585,0.6,c061-fca8-b5c1-d0b6|6095-6528-0381-fcf0,"Using natural deduction, prove R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ∨I)."
+ad2a-e7cc-aa38-4a75,nd-MP-∨I-5,logic,2,1.136,0.6,c061-fca8-b5c1-d0b6|6095-6528-0381-fcf0,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∨I)."
+3f92-9920-4ea9-2b13,nd-MP-∨E-0,logic,2,1.022,0.6,c061-fca8-b5c1-d0b6|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: MP, ∨E)."
+fb8b-0f87-f181-e64b,nd-MP-∨E-1,logic,2,1.246,0.6,c061-fca8-b5c1-d0b6|35ab-640a-90de-c87b,"Using natural deduction, prove P from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∨E)."
+b378-b05d-b182-0333,nd-MP-∨E-2,logic,2,1.626,0.6,c061-fca8-b5c1-d0b6|35ab-640a-90de-c87b,"Using natural deduction, prove P from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∨E)."
+0ac9-94c3-c088-770e,nd-MP-∨E-3,logic,2,1.019,0.6,c061-fca8-b5c1-d0b6|35ab-640a-90de-c87b,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: MP, ∨E)."
+8bc8-769e-ef52-977c,nd-MP-∨E-4,logic,2,1.13,0.6,c061-fca8-b5c1-d0b6|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: MP, ∨E)."
+f52a-3a08-626d-57f1,nd-MP-∨E-5,logic,2,1.286,0.6,c061-fca8-b5c1-d0b6|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: MP, ∨E)."
+04c4-04bb-574f-b181,nd-MP-¬I-0,logic,2,2.504,0.6,c061-fca8-b5c1-d0b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q|R from premises P, P->Q. Cite the inference rule at each line (rules to use: MP, ¬I)."
+1830-5772-d778-f3f5,nd-MP-¬I-1,logic,2,1.816,0.6,c061-fca8-b5c1-d0b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ¬I)."
+0354-04c3-3d20-e9ab,nd-MP-¬I-2,logic,2,2.079,0.6,c061-fca8-b5c1-d0b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove ~P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: MP, ¬I)."
+8b47-3a91-7753-8207,nd-MP-¬I-3,logic,2,1.26,0.6,c061-fca8-b5c1-d0b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P, Q. Cite the inference rule at each line (rules to use: MP, ¬I)."
+9d5a-cc46-b6f2-84b4,nd-MP-¬I-4,logic,2,1.377,0.6,c061-fca8-b5c1-d0b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: MP, ¬I)."
+ddb7-5cee-354c-e556,nd-MP-¬I-5,logic,2,1.363,0.6,c061-fca8-b5c1-d0b6|f9ce-053a-0cb1-a974,"Using natural deduction, prove P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: MP, ¬I)."
+d5b4-e002-7dbb-03af,nd-MP-⊥E-0,logic,2,1.697,0.6,c061-fca8-b5c1-d0b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: MP, ⊥E)."
+7f24-ca74-8779-a8ff,nd-MP-⊥E-1,logic,2,1.465,0.6,c061-fca8-b5c1-d0b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P, Q. Cite the inference rule at each line (rules to use: MP, ⊥E)."
+690a-6fb4-8b13-5846,nd-MP-⊥E-2,logic,2,2.228,0.6,c061-fca8-b5c1-d0b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P&Q. Cite the inference rule at each line (rules to use: MP, ⊥E)."
+bc37-b96b-d9c9-3d36,nd-MP-⊥E-3,logic,2,1.587,0.6,c061-fca8-b5c1-d0b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: MP, ⊥E)."
+ffa6-4290-451f-7847,nd-MP-⊥E-4,logic,2,1.409,0.6,c061-fca8-b5c1-d0b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P&Q. Cite the inference rule at each line (rules to use: MP, ⊥E)."
+f448-d5ca-afb8-7e5e,nd-MP-⊥E-5,logic,2,1.095,0.6,c061-fca8-b5c1-d0b6|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P, Q. Cite the inference rule at each line (rules to use: MP, ⊥E)."
+7405-ffdb-9903-cf8a,nd-∧I-∧E-0,logic,2,0.236,0.6,cec7-5b5a-c47c-fe5c|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ∧E)."
+5851-bd77-bef5-c95f,nd-∧I-∧E-1,logic,2,1.481,0.6,cec7-5b5a-c47c-fe5c|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ∧E)."
+4dfd-f6e4-d79e-79c0,nd-∧I-∧E-2,logic,2,0.308,0.6,cec7-5b5a-c47c-fe5c|8a88-c16c-fe5d-8137,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: ∧I, ∧E)."
+dc13-412d-0b0c-0b90,nd-∧I-∧E-3,logic,2,0.314,0.6,cec7-5b5a-c47c-fe5c|8a88-c16c-fe5d-8137,"Using natural deduction, prove R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ∧E)."
+ba89-5cda-3298-d8c7,nd-∧I-∧E-4,logic,2,0.502,0.6,cec7-5b5a-c47c-fe5c|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: ∧I, ∧E)."
+c36c-9db6-0536-e359,nd-∧I-∧E-5,logic,2,0.135,0.6,cec7-5b5a-c47c-fe5c|8a88-c16c-fe5d-8137,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ∧E)."
+6f0e-b10f-e25c-eff8,nd-∧I-∨I-0,logic,2,0.555,0.6,cec7-5b5a-c47c-fe5c|6095-6528-0381-fcf0,"Using natural deduction, prove P from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ∨I)."
+9bc0-a6dc-262e-ac2e,nd-∧I-∨I-1,logic,2,0.32,0.6,cec7-5b5a-c47c-fe5c|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ∨I)."
+27cf-a1d1-dc0f-87a3,nd-∧I-∨I-2,logic,2,0.094,0.6,cec7-5b5a-c47c-fe5c|6095-6528-0381-fcf0,"Using natural deduction, prove R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ∨I)."
+9496-abdf-ca2d-fbfb,nd-∧I-∨I-3,logic,2,0.778,0.6,cec7-5b5a-c47c-fe5c|6095-6528-0381-fcf0,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ∨I)."
+2efc-c450-e8ec-69a9,nd-∧I-∨I-4,logic,2,0.921,0.6,cec7-5b5a-c47c-fe5c|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: ∧I, ∨I)."
+05c1-e1c1-1766-ee4b,nd-∧I-∨I-5,logic,2,0.299,0.6,cec7-5b5a-c47c-fe5c|6095-6528-0381-fcf0,"Using natural deduction, prove Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ∨I)."
+284a-8696-822e-2758,nd-∧I-∨E-0,logic,2,1.0,0.6,cec7-5b5a-c47c-fe5c|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∧I, ∨E)."
+052b-2025-9e70-3a1e,nd-∧I-∨E-1,logic,2,1.13,0.6,cec7-5b5a-c47c-fe5c|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ∨E)."
+6643-bf20-7055-8cb0,nd-∧I-∨E-2,logic,2,1.327,0.6,cec7-5b5a-c47c-fe5c|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧I, ∨E)."
+ee69-12dc-e9f3-a074,nd-∧I-∨E-3,logic,2,1.384,0.6,cec7-5b5a-c47c-fe5c|35ab-640a-90de-c87b,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: ∧I, ∨E)."
+8afb-bcd5-5f1e-f7f4,nd-∧I-∨E-4,logic,2,1.315,0.6,cec7-5b5a-c47c-fe5c|35ab-640a-90de-c87b,"Using natural deduction, prove Q|R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ∨E)."
+e05c-89bb-ac9b-8516,nd-∧I-∨E-5,logic,2,1.575,0.6,cec7-5b5a-c47c-fe5c|35ab-640a-90de-c87b,"Using natural deduction, prove P from premises P&Q. Cite the inference rule at each line (rules to use: ∧I, ∨E)."
+2e37-626d-1c3d-8541,nd-∧I-¬I-0,logic,2,1.395,0.6,cec7-5b5a-c47c-fe5c|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∧I, ¬I)."
+cc6e-527f-1c14-50b5,nd-∧I-¬I-1,logic,2,1.245,0.6,cec7-5b5a-c47c-fe5c|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ¬I)."
+44bb-09f9-90ee-ca93,nd-∧I-¬I-2,logic,2,1.17,0.6,cec7-5b5a-c47c-fe5c|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P, Q. Cite the inference rule at each line (rules to use: ∧I, ¬I)."
+171b-aa06-2574-6add,nd-∧I-¬I-3,logic,2,1.401,0.6,cec7-5b5a-c47c-fe5c|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises P&Q. Cite the inference rule at each line (rules to use: ∧I, ¬I)."
+3b8e-1ed7-1a9a-3478,nd-∧I-¬I-4,logic,2,1.634,0.6,cec7-5b5a-c47c-fe5c|f9ce-053a-0cb1-a974,"Using natural deduction, prove P from premises ~~P. Cite the inference rule at each line (rules to use: ∧I, ¬I)."
+5f53-db1e-f2c9-52a7,nd-∧I-¬I-5,logic,2,1.604,0.6,cec7-5b5a-c47c-fe5c|f9ce-053a-0cb1-a974,"Using natural deduction, prove ~P from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧I, ¬I)."
+86bb-8ccb-7d78-b506,nd-∧I-⊥E-0,logic,2,0.539,0.6,cec7-5b5a-c47c-fe5c|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ∧I, ⊥E)."
+2435-a30e-74b9-d9d9,nd-∧I-⊥E-1,logic,2,1.622,0.6,cec7-5b5a-c47c-fe5c|7f62-ad43-48e0-26a3,"Using natural deduction, prove R from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧I, ⊥E)."
+baab-d2d5-462c-5ca6,nd-∧I-⊥E-2,logic,2,0.976,0.6,cec7-5b5a-c47c-fe5c|7f62-ad43-48e0-26a3,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: ∧I, ⊥E)."
+59b9-74ae-fa97-a77d,nd-∧I-⊥E-3,logic,2,1.449,0.6,cec7-5b5a-c47c-fe5c|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧I, ⊥E)."
+d807-8973-4fed-87d3,nd-∧I-⊥E-4,logic,2,1.118,0.6,cec7-5b5a-c47c-fe5c|7f62-ad43-48e0-26a3,"Using natural deduction, prove P&Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧I, ⊥E)."
+72bf-8657-c423-4ee7,nd-∧I-⊥E-5,logic,2,1.382,0.6,cec7-5b5a-c47c-fe5c|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧I, ⊥E)."
+8d18-ee63-35d4-a6bf,nd-∧E-∨I-0,logic,2,0.509,0.6,8a88-c16c-fe5d-8137|6095-6528-0381-fcf0,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: ∧E, ∨I)."
+c265-5fa1-fbb4-2772,nd-∧E-∨I-1,logic,2,0.5,0.6,8a88-c16c-fe5d-8137|6095-6528-0381-fcf0,"Using natural deduction, prove ~P from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧E, ∨I)."
+ad1a-4e01-686e-3b51,nd-∧E-∨I-2,logic,2,0.563,0.6,8a88-c16c-fe5d-8137|6095-6528-0381-fcf0,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ∧E, ∨I)."
+3b44-5ec4-74ee-cbe1,nd-∧E-∨I-3,logic,2,0.112,0.6,8a88-c16c-fe5d-8137|6095-6528-0381-fcf0,"Using natural deduction, prove P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧E, ∨I)."
+0449-e45b-c0fa-3723,nd-∧E-∨I-4,logic,2,1.025,0.6,8a88-c16c-fe5d-8137|6095-6528-0381-fcf0,"Using natural deduction, prove P&Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧E, ∨I)."
+6b52-1cde-3b40-335c,nd-∧E-∨I-5,logic,2,0.967,0.6,8a88-c16c-fe5d-8137|6095-6528-0381-fcf0,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: ∧E, ∨I)."
+e131-c864-4546-fc0a,nd-∧E-∨E-0,logic,2,0.903,0.6,8a88-c16c-fe5d-8137|35ab-640a-90de-c87b,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ∧E, ∨E)."
+987b-4ef8-70aa-9ec3,nd-∧E-∨E-1,logic,2,1.617,0.6,8a88-c16c-fe5d-8137|35ab-640a-90de-c87b,"Using natural deduction, prove Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧E, ∨E)."
+d389-9b57-867b-2139,nd-∧E-∨E-2,logic,2,1.232,0.6,8a88-c16c-fe5d-8137|35ab-640a-90de-c87b,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ∧E, ∨E)."
+d890-ee2d-3631-601b,nd-∧E-∨E-3,logic,2,0.325,0.6,8a88-c16c-fe5d-8137|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: ∧E, ∨E)."
+58f6-bf62-b150-8370,nd-∧E-∨E-4,logic,2,1.306,0.6,8a88-c16c-fe5d-8137|35ab-640a-90de-c87b,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: ∧E, ∨E)."
+63a1-68b9-166c-88a2,nd-∧E-∨E-5,logic,2,0.765,0.6,8a88-c16c-fe5d-8137|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: ∧E, ∨E)."
+c46b-87ff-4396-4961,nd-∧E-¬I-0,logic,2,1.561,0.6,8a88-c16c-fe5d-8137|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: ∧E, ¬I)."
+cf29-2e84-8437-17a6,nd-∧E-¬I-1,logic,2,0.923,0.6,8a88-c16c-fe5d-8137|f9ce-053a-0cb1-a974,"Using natural deduction, prove ~P from premises P, Q. Cite the inference rule at each line (rules to use: ∧E, ¬I)."
+1a4b-cd52-6eff-6db3,nd-∧E-¬I-2,logic,2,2.159,0.6,8a88-c16c-fe5d-8137|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q|R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∧E, ¬I)."
+9aee-1d06-6de7-b17c,nd-∧E-¬I-3,logic,2,0.917,0.6,8a88-c16c-fe5d-8137|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: ∧E, ¬I)."
+eb26-e42d-8a8e-7079,nd-∧E-¬I-4,logic,2,0.976,0.6,8a88-c16c-fe5d-8137|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises P&Q. Cite the inference rule at each line (rules to use: ∧E, ¬I)."
+fb38-a350-3a56-0a2a,nd-∧E-¬I-5,logic,2,1.442,0.6,8a88-c16c-fe5d-8137|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises ~~P. Cite the inference rule at each line (rules to use: ∧E, ¬I)."
+d054-085c-48d5-b6c5,nd-∧E-⊥E-0,logic,2,1.367,0.6,8a88-c16c-fe5d-8137|7f62-ad43-48e0-26a3,"Using natural deduction, prove P&Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∧E, ⊥E)."
+a25a-1012-042b-856d,nd-∧E-⊥E-1,logic,2,0.519,0.6,8a88-c16c-fe5d-8137|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises ~~P. Cite the inference rule at each line (rules to use: ∧E, ⊥E)."
+4d66-fa4e-002c-f49d,nd-∧E-⊥E-2,logic,2,1.722,0.6,8a88-c16c-fe5d-8137|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∧E, ⊥E)."
+0dd0-ceb9-7152-6e40,nd-∧E-⊥E-3,logic,2,1.146,0.6,8a88-c16c-fe5d-8137|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P, Q. Cite the inference rule at each line (rules to use: ∧E, ⊥E)."
+e8e0-6ba7-e46f-43ba,nd-∧E-⊥E-4,logic,2,1.724,0.6,8a88-c16c-fe5d-8137|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: ∧E, ⊥E)."
+6389-4580-d7f1-8387,nd-∧E-⊥E-5,logic,2,1.412,0.6,8a88-c16c-fe5d-8137|7f62-ad43-48e0-26a3,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: ∧E, ⊥E)."
+5333-f9cf-8f00-5403,nd-∨I-∨E-0,logic,2,1.117,0.6,6095-6528-0381-fcf0|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises P&Q. Cite the inference rule at each line (rules to use: ∨I, ∨E)."
+7284-0add-19aa-f50b,nd-∨I-∨E-1,logic,2,1.421,0.6,6095-6528-0381-fcf0|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises ~~P. Cite the inference rule at each line (rules to use: ∨I, ∨E)."
+9828-1ca9-a43c-d529,nd-∨I-∨E-2,logic,2,1.05,0.6,6095-6528-0381-fcf0|35ab-640a-90de-c87b,"Using natural deduction, prove P&Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨I, ∨E)."
+07df-5ab3-023b-aab5,nd-∨I-∨E-3,logic,2,1.238,0.6,6095-6528-0381-fcf0|35ab-640a-90de-c87b,"Using natural deduction, prove ~P from premises P, Q. Cite the inference rule at each line (rules to use: ∨I, ∨E)."
+5233-b6a1-43a1-c605,nd-∨I-∨E-4,logic,2,1.411,0.6,6095-6528-0381-fcf0|35ab-640a-90de-c87b,"Using natural deduction, prove Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∨I, ∨E)."
+9c9d-d77e-ee10-5db3,nd-∨I-∨E-5,logic,2,0.851,0.6,6095-6528-0381-fcf0|35ab-640a-90de-c87b,"Using natural deduction, prove P&Q from premises P, Q. Cite the inference rule at each line (rules to use: ∨I, ∨E)."
+d55b-b081-0e20-0e4e,nd-∨I-¬I-0,logic,2,1.383,0.6,6095-6528-0381-fcf0|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∨I, ¬I)."
+e56c-1fa8-b4e9-59db,nd-∨I-¬I-1,logic,2,1.416,0.6,6095-6528-0381-fcf0|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises ~~P. Cite the inference rule at each line (rules to use: ∨I, ¬I)."
+7cfd-cb1f-b87a-9137,nd-∨I-¬I-2,logic,2,1.899,0.6,6095-6528-0381-fcf0|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨I, ¬I)."
+cec8-e837-0469-2a69,nd-∨I-¬I-3,logic,2,1.481,0.6,6095-6528-0381-fcf0|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∨I, ¬I)."
+89d9-940b-f03b-da2b,nd-∨I-¬I-4,logic,2,2.018,0.6,6095-6528-0381-fcf0|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨I, ¬I)."
+70e3-d58e-743d-99ac,nd-∨I-¬I-5,logic,2,1.242,0.6,6095-6528-0381-fcf0|f9ce-053a-0cb1-a974,"Using natural deduction, prove P&Q from premises ~~P. Cite the inference rule at each line (rules to use: ∨I, ¬I)."
+ae7d-645e-8ff5-40d0,nd-∨I-⊥E-0,logic,2,1.748,0.6,6095-6528-0381-fcf0|7f62-ad43-48e0-26a3,"Using natural deduction, prove P from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨I, ⊥E)."
+67af-2a29-dac3-0560,nd-∨I-⊥E-1,logic,2,1.075,0.6,6095-6528-0381-fcf0|7f62-ad43-48e0-26a3,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: ∨I, ⊥E)."
+84c9-a1a8-f4fa-fb96,nd-∨I-⊥E-2,logic,2,0.635,0.6,6095-6528-0381-fcf0|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∨I, ⊥E)."
+a975-ee4d-a956-886b,nd-∨I-⊥E-3,logic,2,1.562,0.6,6095-6528-0381-fcf0|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P, Q. Cite the inference rule at each line (rules to use: ∨I, ⊥E)."
+3296-7600-e9d2-07f2,nd-∨I-⊥E-4,logic,2,1.03,0.6,6095-6528-0381-fcf0|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∨I, ⊥E)."
+18d8-9f32-8ecf-595d,nd-∨I-⊥E-5,logic,2,1.228,0.6,6095-6528-0381-fcf0|7f62-ad43-48e0-26a3,"Using natural deduction, prove P&Q from premises P&Q. Cite the inference rule at each line (rules to use: ∨I, ⊥E)."
+de40-1945-da97-b72c,nd-∨E-¬I-0,logic,2,2.15,0.6,35ab-640a-90de-c87b|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨E, ¬I)."
+2609-8c80-bb38-51e6,nd-∨E-¬I-1,logic,2,2.057,0.6,35ab-640a-90de-c87b|f9ce-053a-0cb1-a974,"Using natural deduction, prove P from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨E, ¬I)."
+c2a6-be29-159c-756b,nd-∨E-¬I-2,logic,2,2.256,0.6,35ab-640a-90de-c87b|f9ce-053a-0cb1-a974,"Using natural deduction, prove ~P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∨E, ¬I)."
+5bc8-a275-559b-cd91,nd-∨E-¬I-3,logic,2,2.266,0.6,35ab-640a-90de-c87b|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ∨E, ¬I)."
+ed47-9b93-d144-409b,nd-∨E-¬I-4,logic,2,2.386,0.6,35ab-640a-90de-c87b|f9ce-053a-0cb1-a974,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨E, ¬I)."
+cc86-430a-ba54-79e0,nd-∨E-¬I-5,logic,2,2.213,0.6,35ab-640a-90de-c87b|f9ce-053a-0cb1-a974,"Using natural deduction, prove R from premises P, Q. Cite the inference rule at each line (rules to use: ∨E, ¬I)."
+0053-3169-58f6-f1d6,nd-∨E-⊥E-0,logic,2,1.494,0.6,35ab-640a-90de-c87b|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨E, ⊥E)."
+873f-894d-a3fb-9ecf,nd-∨E-⊥E-1,logic,2,1.475,0.6,35ab-640a-90de-c87b|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ∨E, ⊥E)."
+dd0c-b5d9-4061-7f71,nd-∨E-⊥E-2,logic,2,1.891,0.6,35ab-640a-90de-c87b|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q|R from premises P&Q. Cite the inference rule at each line (rules to use: ∨E, ⊥E)."
+aec0-55e6-15d2-443b,nd-∨E-⊥E-3,logic,2,2.464,0.6,35ab-640a-90de-c87b|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: ∨E, ⊥E)."
+8770-865f-ccbe-250f,nd-∨E-⊥E-4,logic,2,2.176,0.6,35ab-640a-90de-c87b|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P, P->Q. Cite the inference rule at each line (rules to use: ∨E, ⊥E)."
+3986-10dd-9bcb-2852,nd-∨E-⊥E-5,logic,2,2.188,0.6,35ab-640a-90de-c87b|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P->Q, Q->R, P. Cite the inference rule at each line (rules to use: ∨E, ⊥E)."
+3e8e-b31e-cc0b-6644,nd-¬I-⊥E-0,logic,2,2.122,0.6,f9ce-053a-0cb1-a974|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P|Q, ~P. Cite the inference rule at each line (rules to use: ¬I, ⊥E)."
+85c2-438a-cb85-2aca,nd-¬I-⊥E-1,logic,2,2.409,0.6,f9ce-053a-0cb1-a974|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P&Q. Cite the inference rule at each line (rules to use: ¬I, ⊥E)."
+48de-22ca-5609-6f2d,nd-¬I-⊥E-2,logic,2,1.912,0.6,f9ce-053a-0cb1-a974|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises ~~P. Cite the inference rule at each line (rules to use: ¬I, ⊥E)."
+431e-2ede-9a5b-192d,nd-¬I-⊥E-3,logic,2,1.903,0.6,f9ce-053a-0cb1-a974|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ¬I, ⊥E)."
+3132-5db8-dcaa-59e1,nd-¬I-⊥E-4,logic,2,2.84,0.6,f9ce-053a-0cb1-a974|7f62-ad43-48e0-26a3,"Using natural deduction, prove Q from premises P, Q. Cite the inference rule at each line (rules to use: ¬I, ⊥E)."
+c6dd-dea4-d5eb-4e16,nd-¬I-⊥E-5,logic,2,2.174,0.6,f9ce-053a-0cb1-a974|7f62-ad43-48e0-26a3,"Using natural deduction, prove ~P from premises P, P->Q. Cite the inference rule at each line (rules to use: ¬I, ⊥E)."
+5193-4375-b3a1-3300,language-66c6f6fd,language,1,0.843,0.83,8126-24c9-5cd1-b984,"Rewrite the passage in draw vivid sensory analogy, keeping it under three sentences."
+5f15-b10c-20fb-4c28,language-80baaa26,language,1,0.87,0.939,8f7d-c7b7-a67c-1b42,"Rewrite the passage in mask personally identifiable token, keeping it under three sentences."
+c6d4-ed0d-3ba3-df32,language-c53751b4,language,1,1.166,-0.615,d19f-5218-6b1f-762d,Edit the text so it satisfies write second person imperative without changing the meaning.
+f9a2-e3fa-f6ca-2bd2,language-663d103d,language,1,1.487,-0.42,4947-baeb-67a6-4d86,Edit the text so it satisfies follow strict output format without changing the meaning.
+cdcd-0a47-ea9d-a655,language-65ec4734,language,1,1.569,0.06,11fe-05d8-580f-1a1c,Write two sentences about dueling that exhibit model agent false belief.
+6db0-21df-6359-9b1e,language-70142d7e,language,1,2.642,1.057,a0b0-1fee-981c-21e2,"Rewrite the passage in use extended visual metaphor, keeping it under three sentences."
+a9a1-7645-4e53-209b,language-4a2f21b0,language,1,2.561,0.638,0cd2-0be4-551b-3df9,Write two sentences about dueling that exhibit infer hidden speaker intention.
+4f5c-6e06-7e64-126d,language-14d7580f,language,1,1.545,-0.309,5e4d-1d58-97b4-101e,"Rewrite the passage in maintain consistent narrative tense, keeping it under three sentences."
+8c2c-13f0-1fda-6387,language-f56b6e79,language,1,1.472,-0.557,8126-24c9-5cd1-b984,Write two sentences about dueling that exhibit draw vivid sensory analogy.
+6c51-bc61-9147-7ae1,language-133583f4,language,1,1.43,1.005,d19f-5218-6b1f-762d,Edit the text so it satisfies write second person imperative without changing the meaning.
+aca4-a29a-315d-a63f,language-3ec06664,language,1,0.85,0.09,4947-baeb-67a6-4d86,Produce a short paragraph that demonstrates follow strict output format on the topic of gardening.
+74d6-8041-a3d0-b44c,language-b1c12e8a,language,1,0.512,1.144,8f7d-c7b7-a67c-1b42,Write two sentences about dueling that exhibit mask personally identifiable token.
+d787-b3e5-7eee-2fb0,language-a4de62ab,language,1,1.983,-0.985,11fe-05d8-580f-1a1c,Edit the text so it satisfies model agent false belief without changing the meaning.
+e65a-cee9-3b9f-dabf,language-6c49c1fd,language,1,2.626,0.036,a0b0-1fee-981c-21e2,Produce a short paragraph that demonstrates use extended visual metaphor on the topic of gardening.
+6116-2935-519d-2955,language-18de6bdd,language,1,1.652,0.775,11fe-05d8-580f-1a1c,"Rewrite the passage in model agent false belief, keeping it under three sentences."
+569c-246b-85f2-7fc8,detect-use (Media),mixed,2,-0.973,0.125,9497-0a31-bdac-d752|a0b0-1fee-981c-21e2,"[Media] Complete a task requiring: detect self serving attribution, use extended visual metaphor."
+3808-86ce-2975-488b,read-extract (Office),mixed,2,-0.946,0.279,2c4b-d52c-515f-3d93|2cef-86c9-1c16-d9ca,"[Office] Complete a task requiring: read file summarize role, extract main claim text."
+58b9-70b1-5692-bddd,trace-maintain-validate (SW Eng),mixed,3,-1.028,0.031,88ef-dd83-ca4a-4ea3|5e4d-1d58-97b4-101e|9b93-d7b5-580a-9459,"[SW Eng] Complete a task requiring: trace variable across call, maintain consistent narrative tense, validate numeric answer exactly."
+838c-9b21-0991-bebd,draw-detect (Health),mixed,2,-1.086,0.038,8126-24c9-5cd1-b984|9497-0a31-bdac-d752,"[Health] Complete a task requiring: draw vivid sensory analogy, detect self serving attribution."
+3afe-dbf3-781e-2285,detect-model-negate (Science),mixed,3,-0.644,0.877,9497-0a31-bdac-d752|11fe-05d8-580f-1a1c|d99b-3d1e-59b2-7635,"[Science] Complete a task requiring: detect self serving attribution, model agent false belief, negate reductio ad absurdum."
+74da-b390-5387-8b2b,compute-mask-use (Math),mixed,3,-0.674,0.374,e306-9670-5742-a9e0|8f7d-c7b7-a67c-1b42|a0b0-1fee-981c-21e2,"[Math] Complete a task requiring: compute weighted average correctly, mask personally identifiable token, use extended visual metaphor."
+50e8-79f9-d14a-b3da,draw-negate-factor (Robotics),mixed,3,-0.649,0.586,8126-24c9-5cd1-b984|d99b-3d1e-59b2-7635|c3df-bdf4-2447-8417,"[Robotics] Complete a task requiring: draw vivid sensory analogy, negate reductio ad absurdum, factor quadratic expression cleanly."
+bc6b-b5bb-bc1e-157c,detect-factor-compute (Health),mixed,3,-0.613,0.167,9497-0a31-bdac-d752|c3df-bdf4-2447-8417|e306-9670-5742-a9e0,"[Health] Complete a task requiring: detect self serving attribution, factor quadratic expression cleanly, compute weighted average correctly."
+8f70-9bbb-9f18-2560,model-extract (Health),mixed,2,-0.457,0.635,11fe-05d8-580f-1a1c|2cef-86c9-1c16-d9ca,"[Health] Complete a task requiring: model agent false belief, extract main claim text."
+bbd1-9a78-6cd1-8769,compute-validate (Science),mixed,2,-0.941,0.646,e306-9670-5742-a9e0|9b93-d7b5-580a-9459,"[Science] Complete a task requiring: compute weighted average correctly, validate numeric answer exactly."
+60fd-afb3-8a1a-f2c5,validate (Robotics),mixed,1,-1.096,0.86,9b93-d7b5-580a-9459,[Robotics] Complete a task requiring: validate numeric answer exactly.
+3a42-3fb0-1ebb-7cde,mask-use (Health),mixed,2,-0.625,0.152,8f7d-c7b7-a67c-1b42|a0b0-1fee-981c-21e2,"[Health] Complete a task requiring: mask personally identifiable token, use extended visual metaphor."
+3214-99eb-bdb6-e49b,follow-compute (Media),mixed,2,-0.774,0.463,4947-baeb-67a6-4d86|e306-9670-5742-a9e0,"[Media] Complete a task requiring: follow strict output format, compute weighted average correctly."
+3036-306d-7b0d-b344,draw (Health),mixed,1,-0.782,0.723,8126-24c9-5cd1-b984,[Health] Complete a task requiring: draw vivid sensory analogy.
+e3a0-ed32-7dee-1227,detect-mask (Energy),mixed,2,-0.513,0.543,9497-0a31-bdac-d752|8f7d-c7b7-a67c-1b42,"[Energy] Complete a task requiring: detect self serving attribution, mask personally identifiable token."
+de15-49a4-d1e6-cbab,use-extract-read (Science),mixed,3,0.126,0.208,a0b0-1fee-981c-21e2|2cef-86c9-1c16-d9ca|2c4b-d52c-515f-3d93,"[Science] Complete a task requiring: use extended visual metaphor, extract main claim text, read file summarize role."
+a7e7-af04-6ef3-9848,negate-infer-draw (Finance),mixed,3,-0.047,0.854,d99b-3d1e-59b2-7635|0cd2-0be4-551b-3df9|8126-24c9-5cd1-b984,"[Finance] Complete a task requiring: negate reductio ad absurdum, infer hidden speaker intention, draw vivid sensory analogy."
+d680-9d74-5d09-4f32,compute-extract (Energy),mixed,2,-0.111,0.46,e306-9670-5742-a9e0|2cef-86c9-1c16-d9ca,"[Energy] Complete a task requiring: compute weighted average correctly, extract main claim text."
+4922-c3be-f1f8-e287,read (Math),mixed,1,-0.389,0.343,2c4b-d52c-515f-3d93,[Math] Complete a task requiring: read file summarize role.
+ad68-50bd-209d-edcc,mask (SW Eng),mixed,1,-0.831,0.398,8f7d-c7b7-a67c-1b42,[SW Eng] Complete a task requiring: mask personally identifiable token.
+9681-e0a3-cd10-dff9,maintain (Math),mixed,1,-0.409,0.8,5e4d-1d58-97b4-101e,[Math] Complete a task requiring: maintain consistent narrative tense.
+6612-8445-9277-0efa,use-factor (Health),mixed,2,0.001,0.733,a0b0-1fee-981c-21e2|c3df-bdf4-2447-8417,"[Health] Complete a task requiring: use extended visual metaphor, factor quadratic expression cleanly."
+6c27-9d90-f7c2-fceb,mask-parse (Math),mixed,2,-0.267,0.822,8f7d-c7b7-a67c-1b42|770a-9805-f599-86ad,"[Math] Complete a task requiring: mask personally identifiable token, parse malformed csv row."
+2204-37fe-acad-4f58,negate-factor-follow (Office),mixed,3,0.221,0.351,d99b-3d1e-59b2-7635|c3df-bdf4-2447-8417|4947-baeb-67a6-4d86,"[Office] Complete a task requiring: negate reductio ad absurdum, factor quadratic expression cleanly, follow strict output format."
+ac84-b0e8-53a6-2836,mask-infer-parse (Mfg),mixed,3,0.364,0.105,8f7d-c7b7-a67c-1b42|0cd2-0be4-551b-3df9|770a-9805-f599-86ad,"[Mfg] Complete a task requiring: mask personally identifiable token, infer hidden speaker intention, parse malformed csv row."
+784b-0b1b-b665-b601,read (Energy),mixed,1,-0.22,0.625,2c4b-d52c-515f-3d93,[Energy] Complete a task requiring: read file summarize role.
+9ccf-afa7-08ac-c423,use (Cyber),mixed,1,0.294,0.498,a0b0-1fee-981c-21e2,[Cyber] Complete a task requiring: use extended visual metaphor.
+ec05-be50-34f5-9e62,model (Math),mixed,1,0.202,0.731,11fe-05d8-580f-1a1c,[Math] Complete a task requiring: model agent false belief.
+35b9-d764-c805-fe7d,use-validate-parse (Health),mixed,3,0.485,0.177,a0b0-1fee-981c-21e2|9b93-d7b5-580a-9459|770a-9805-f599-86ad,"[Health] Complete a task requiring: use extended visual metaphor, validate numeric answer exactly, parse malformed csv row."
+78d0-5ce8-4543-62ac,write (Office),mixed,1,0.098,0.393,d19f-5218-6b1f-762d,[Office] Complete a task requiring: write second person imperative.
+1882-a7ef-728d-299e,trace-draw (Office),mixed,2,0.462,0.239,88ef-dd83-ca4a-4ea3|8126-24c9-5cd1-b984,"[Office] Complete a task requiring: trace variable across call, draw vivid sensory analogy."
+1c43-c0d4-160d-f7c3,mask-negate (SW Eng),mixed,2,0.568,0.169,8f7d-c7b7-a67c-1b42|d99b-3d1e-59b2-7635,"[SW Eng] Complete a task requiring: mask personally identifiable token, negate reductio ad absurdum."
+e02a-dec1-b349-9807,follow-detect-factor (Robotics),mixed,3,0.946,0.858,4947-baeb-67a6-4d86|9497-0a31-bdac-d752|c3df-bdf4-2447-8417,"[Robotics] Complete a task requiring: follow strict output format, detect self serving attribution, factor quadratic expression cleanly."
+0e94-483a-66b1-f37e,validate (Mfg),mixed,1,0.167,0.403,9b93-d7b5-580a-9459,[Mfg] Complete a task requiring: validate numeric answer exactly.
+1e08-00a4-100b-571b,trace (Science),mixed,1,0.86,0.556,88ef-dd83-ca4a-4ea3,[Science] Complete a task requiring: trace variable across call.
+a6e6-a79c-4942-9a6c,model (Math),mixed,1,0.481,0.712,11fe-05d8-580f-1a1c,[Math] Complete a task requiring: model agent false belief.
+c2d1-540b-ee87-84be,mask-parse (Science),mixed,2,0.596,0.373,8f7d-c7b7-a67c-1b42|770a-9805-f599-86ad,"[Science] Complete a task requiring: mask personally identifiable token, parse malformed csv row."
+c787-b4a8-ab4c-a852,trace (Cyber),mixed,1,0.832,0.709,88ef-dd83-ca4a-4ea3,[Cyber] Complete a task requiring: trace variable across call.
+6033-3852-1625-7c80,negate-use (Robotics),mixed,2,1.128,0.657,d99b-3d1e-59b2-7635|a0b0-1fee-981c-21e2,"[Robotics] Complete a task requiring: negate reductio ad absurdum, use extended visual metaphor."
+6710-158e-b6a3-c0f7,trace (Energy),mixed,1,0.986,0.347,88ef-dd83-ca4a-4ea3,[Energy] Complete a task requiring: trace variable across call.
+7487-c701-dbb9-6c56,parse-validate-follow (Office),mixed,3,0.84,0.296,770a-9805-f599-86ad|9b93-d7b5-580a-9459|4947-baeb-67a6-4d86,"[Office] Complete a task requiring: parse malformed csv row, validate numeric answer exactly, follow strict output format."
+c5e3-22f7-9efd-d3ff,read-redact (Media),mixed,2,0.798,0.51,2c4b-d52c-515f-3d93|368d-9858-4d5d-de23,"[Media] Complete a task requiring: read file summarize role, redact sensitive financial figure."
+3e4a-678e-e49e-d84d,redact-validate (Math),mixed,2,0.807,0.516,368d-9858-4d5d-de23|9b93-d7b5-580a-9459,"[Math] Complete a task requiring: redact sensitive financial figure, validate numeric answer exactly."
+ce0b-da2d-f098-fb6c,write (Health),mixed,1,1.13,0.848,d19f-5218-6b1f-762d,[Health] Complete a task requiring: write second person imperative.
+d241-c2e8-32b5-cd04,extract-trace (Energy),mixed,2,1.483,0.442,2cef-86c9-1c16-d9ca|88ef-dd83-ca4a-4ea3,"[Energy] Complete a task requiring: extract main claim text, trace variable across call."
+9d31-9b81-6865-08df,validate-parse-write (Health),mixed,3,1.267,0.798,9b93-d7b5-580a-9459|770a-9805-f599-86ad|d19f-5218-6b1f-762d,"[Health] Complete a task requiring: validate numeric answer exactly, parse malformed csv row, write second person imperative."
+0060-84fa-c77c-d34c,use-draw (Energy),mixed,2,1.364,0.288,a0b0-1fee-981c-21e2|8126-24c9-5cd1-b984,"[Energy] Complete a task requiring: use extended visual metaphor, draw vivid sensory analogy."
+540c-aec1-2527-99a3,read-trace-validate (Cyber),mixed,3,1.483,0.846,2c4b-d52c-515f-3d93|88ef-dd83-ca4a-4ea3|9b93-d7b5-580a-9459,"[Cyber] Complete a task requiring: read file summarize role, trace variable across call, validate numeric answer exactly."
+2074-6876-ffc7-3155,use-factor-follow (Science),mixed,3,1.695,0.622,a0b0-1fee-981c-21e2|c3df-bdf4-2447-8417|4947-baeb-67a6-4d86,"[Science] Complete a task requiring: use extended visual metaphor, factor quadratic expression cleanly, follow strict output format."
+0ecf-9b7d-7074-2e9f,read-use (Health),mixed,2,1.503,0.81,2c4b-d52c-515f-3d93|a0b0-1fee-981c-21e2,"[Health] Complete a task requiring: read file summarize role, use extended visual metaphor."
+ed1e-ca97-d427-89af,factor-mask-infer (Office),mixed,3,1.682,0.071,c3df-bdf4-2447-8417|8f7d-c7b7-a67c-1b42|0cd2-0be4-551b-3df9,"[Office] Complete a task requiring: factor quadratic expression cleanly, mask personally identifiable token, infer hidden speaker intention."
+15b9-7b51-9c44-8cf8,maintain-redact (Energy),mixed,2,1.501,0.229,5e4d-1d58-97b4-101e|368d-9858-4d5d-de23,"[Energy] Complete a task requiring: maintain consistent narrative tense, redact sensitive financial figure."
+85a2-5ca9-70ea-b24a,trace-redact-factor (Cyber),mixed,3,1.93,0.66,88ef-dd83-ca4a-4ea3|368d-9858-4d5d-de23|c3df-bdf4-2447-8417,"[Cyber] Complete a task requiring: trace variable across call, redact sensitive financial figure, factor quadratic expression cleanly."
+c9d5-028f-f3f9-6e50,mask-extract-model (Robotics),mixed,3,1.97,0.156,8f7d-c7b7-a67c-1b42|2cef-86c9-1c16-d9ca|11fe-05d8-580f-1a1c,"[Robotics] Complete a task requiring: mask personally identifiable token, extract main claim text, model agent false belief."
+051a-c06e-0ce5-4b02,validate-model-follow (Science),mixed,3,1.794,0.885,9b93-d7b5-580a-9459|11fe-05d8-580f-1a1c|4947-baeb-67a6-4d86,"[Science] Complete a task requiring: validate numeric answer exactly, model agent false belief, follow strict output format."
+87d9-d70b-9133-c6e7,detect-read (Office),mixed,2,1.783,0.86,9497-0a31-bdac-d752|2c4b-d52c-515f-3d93,"[Office] Complete a task requiring: detect self serving attribution, read file summarize role."
+940f-23aa-4e78-1933,trace-model (Mfg),mixed,2,2.01,0.194,88ef-dd83-ca4a-4ea3|11fe-05d8-580f-1a1c,"[Mfg] Complete a task requiring: trace variable across call, model agent false belief."
+5812-fb30-7670-86e0,maintain-negate (Finance),mixed,2,2.081,0.561,5e4d-1d58-97b4-101e|d99b-3d1e-59b2-7635,"[Finance] Complete a task requiring: maintain consistent narrative tense, negate reductio ad absurdum."
+8357-d89c-1061-4181,write-trace (Health),mixed,2,2.197,0.751,d19f-5218-6b1f-762d|88ef-dd83-ca4a-4ea3,"[Health] Complete a task requiring: write second person imperative, trace variable across call."
+eb57-face-9e9d-08c5,write-use-infer (Health),mixed,3,2.447,0.617,d19f-5218-6b1f-762d|a0b0-1fee-981c-21e2|0cd2-0be4-551b-3df9,"[Health] Complete a task requiring: write second person imperative, use extended visual metaphor, infer hidden speaker intention."
+1a9d-1da1-4520-7be7,infer-maintain (Media),mixed,2,2.283,0.881,0cd2-0be4-551b-3df9|5e4d-1d58-97b4-101e,"[Media] Complete a task requiring: infer hidden speaker intention, maintain consistent narrative tense."
+db32-56a8-5750-a4fe,mask-compute-detect (Math),mixed,3,2.331,0.49,8f7d-c7b7-a67c-1b42|e306-9670-5742-a9e0|9497-0a31-bdac-d752,"[Math] Complete a task requiring: mask personally identifiable token, compute weighted average correctly, detect self serving attribution."
+15e5-9b29-fd3c-fa36,parse-factor (Science),mixed,2,2.202,0.026,770a-9805-f599-86ad|c3df-bdf4-2447-8417,"[Science] Complete a task requiring: parse malformed csv row, factor quadratic expression cleanly."
+4d58-831d-75cd-60a5,maintain-follow-negate (Finance),mixed,3,2.591,0.897,5e4d-1d58-97b4-101e|4947-baeb-67a6-4d86|d99b-3d1e-59b2-7635,"[Finance] Complete a task requiring: maintain consistent narrative tense, follow strict output format, negate reductio ad absurdum."
+efa6-4435-49df-f421,infer-mask (Energy),mixed,2,2.129,0.169,0cd2-0be4-551b-3df9|8f7d-c7b7-a67c-1b42,"[Energy] Complete a task requiring: infer hidden speaker intention, mask personally identifiable token."
+d82d-3611-0549-579f,negate-compute-follow (Office),mixed,3,2.631,0.264,d99b-3d1e-59b2-7635|e306-9670-5742-a9e0|4947-baeb-67a6-4d86,"[Office] Complete a task requiring: negate reductio ad absurdum, compute weighted average correctly, follow strict output format."
+1dc6-923f-edf6-188a,mask-write-follow (Cyber),mixed,3,2.457,0.132,8f7d-c7b7-a67c-1b42|d19f-5218-6b1f-762d|4947-baeb-67a6-4d86,"[Cyber] Complete a task requiring: mask personally identifiable token, write second person imperative, follow strict output format."
+b94b-945b-92ba-6010,mask-write (SW Eng),mixed,2,2.172,0.207,8f7d-c7b7-a67c-1b42|d19f-5218-6b1f-762d,"[SW Eng] Complete a task requiring: mask personally identifiable token, write second person imperative."
+a998-44f3-13ad-2258,infer-compute (Cyber),mixed,2,2.69,0.108,0cd2-0be4-551b-3df9|e306-9670-5742-a9e0,"[Cyber] Complete a task requiring: infer hidden speaker intention, compute weighted average correctly."
+6560-cd72-8f5e-aa95,write-trace-infer (Health),mixed,3,2.98,0.226,d19f-5218-6b1f-762d|88ef-dd83-ca4a-4ea3|0cd2-0be4-551b-3df9,"[Health] Complete a task requiring: write second person imperative, trace variable across call, infer hidden speaker intention."
+e605-6e7f-1531-ddd2,detect (Office),mixed,1,2.591,0.352,9497-0a31-bdac-d752,[Office] Complete a task requiring: detect self serving attribution.
+7c07-c09c-928d-33c0,trace-read (Mfg),mixed,2,2.88,0.68,88ef-dd83-ca4a-4ea3|2c4b-d52c-515f-3d93,"[Mfg] Complete a task requiring: trace variable across call, read file summarize role."
+b61f-966a-77f4-4dc4,use (Energy),mixed,1,2.942,0.649,a0b0-1fee-981c-21e2,[Energy] Complete a task requiring: use extended visual metaphor.
+4212-2863-6e79-5c6b,follow-trace (Cyber),mixed,2,2.928,0.637,4947-baeb-67a6-4d86|88ef-dd83-ca4a-4ea3,"[Cyber] Complete a task requiring: follow strict output format, trace variable across call."
+3c3e-1b97-0291-d0b1,trace-negate-redact (Science),mixed,3,3.111,0.704,88ef-dd83-ca4a-4ea3|d99b-3d1e-59b2-7635|368d-9858-4d5d-de23,"[Science] Complete a task requiring: trace variable across call, negate reductio ad absurdum, redact sensitive financial figure."
+210a-80e1-68f1-7c49,use (Science),mixed,1,3.276,0.403,a0b0-1fee-981c-21e2,[Science] Complete a task requiring: use extended visual metaphor.
+3e46-9b86-93d5-d4e3,negate (Mfg),mixed,1,3.137,0.708,d99b-3d1e-59b2-7635,[Mfg] Complete a task requiring: negate reductio ad absurdum.
+f35d-fce5-3ee0-e316,model-follow (SW Eng),mixed,2,2.967,0.416,11fe-05d8-580f-1a1c|4947-baeb-67a6-4d86,"[SW Eng] Complete a task requiring: model agent false belief, follow strict output format."
+b5fa-a95b-3d93-4c72,compute-redact-factor (Office),mixed,3,3.312,0.845,e306-9670-5742-a9e0|368d-9858-4d5d-de23|c3df-bdf4-2447-8417,"[Office] Complete a task requiring: compute weighted average correctly, redact sensitive financial figure, factor quadratic expression cleanly."
+21c8-dfd0-3189-641b,follow-compute (Health),mixed,2,3.271,0.146,4947-baeb-67a6-4d86|e306-9670-5742-a9e0,"[Health] Complete a task requiring: follow strict output format, compute weighted average correctly."
+1fca-856b-06bf-b6dc,write-compute-negate (Finance),mixed,3,3.426,0.283,d19f-5218-6b1f-762d|e306-9670-5742-a9e0|d99b-3d1e-59b2-7635,"[Finance] Complete a task requiring: write second person imperative, compute weighted average correctly, negate reductio ad absurdum."
+e7b1-70c1-3569-bf86,write-read (Energy),mixed,2,3.175,0.145,d19f-5218-6b1f-762d|2c4b-d52c-515f-3d93,"[Energy] Complete a task requiring: write second person imperative, read file summarize role."
+1bf6-bddd-f524-6cd3,compute-redact-negate (Media),mixed,3,3.461,0.236,e306-9670-5742-a9e0|368d-9858-4d5d-de23|d99b-3d1e-59b2-7635,"[Media] Complete a task requiring: compute weighted average correctly, redact sensitive financial figure, negate reductio ad absurdum."
+1e85-bf2a-4012-2ee7,trace-extract (Office),mixed,2,3.776,0.604,88ef-dd83-ca4a-4ea3|2cef-86c9-1c16-d9ca,"[Office] Complete a task requiring: trace variable across call, extract main claim text."
+e467-febd-0338-a7ba,code-locate-spawn,code,1,-0.6,0.6,65bd-46f9-77c3-4d80,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): Which function adds a new enemy to the game? Answer with the function name only."
+e11c-2165-6632-5074,code-locate-loselife,code,1,0.1,0.6,65bd-46f9-77c3-4d80,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): Which function decreases the player's lives and sets the state to 'over' when lives reach zero? Function name only."
+63b2-b297-1f10-0ee9,code-grep-spr,code,1,-0.3,0.6,0d3e-98a9-9527-5103,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): How many times is the spr() built-in called in this file? Answer with a number."
+0928-6f1d-66d7-b5d4,code-count-funcs,code,2,0.2,0.6,0d3e-98a9-9527-5103|dae0-f321-5b75-3e1c,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): How many functions are defined in this file? Answer with a single number."
+175f-7192-6d66-b055,code-count-callers,code,1,0.6,0.6,37e5-b2b4-53ba-cd82,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): How many call sites invoke reset_game()? Answer with a single number (do not count its definition)."
+12d4-8b98-36dd-8b28,code-trace-collision,code,1,0.5,0.6,052b-c29e-c098-be69,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): Inside check_collision(), which function is invoked when the player is hit by an enemy? Function name only."
+1721-2898-8a59-fb5c,code-explain-update-enemies,code,1,0.4,0.6,52aa-5fb9-3c0d-1d73,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): Explain step by step what update_enemies() does, including when an enemy is removed and when the score changes."
+2213-050e-e3bc-962b,code-ticket-multiplier,code,2,1.4,0.6,b927-c4dd-1517-2094|52aa-5fb9-3c0d-1d73,"Source file `dodge.p8.lua`:
+```lua
+-- dodge -- a tiny PICO-8-style arcade game (original, MIT-licensed sample)
+-- Plain Lua extracted from the cart's __lua__ section. Used as a small, self
+-- contained code corpus for code-navigation / explanation / decomposition tasks.
+-- ~10 functions with clear call sites so tasks have deterministic gold answers.
+
+player = {}
+enemies = {}
+score = 0
+lives = 3
+state = ""play""
+
+function _init()
+  reset_game()
+end
+
+function reset_game()
+  player = { x = 64, y = 110, w = 6, spd = 2 }
+  enemies = {}
+  score = 0
+  lives = 3
+  state = ""play""
+end
+
+function spawn_enemy()
+  local e = { x = flr(rnd(120)) + 4, y = -4, spd = rnd(2) + 1 }
+  add(enemies, e)
+end
+
+function move_player()
+  if btn(0) then player.x = player.x - player.spd end
+  if btn(1) then player.x = player.x + player.spd end
+  player.x = mid(2, player.x, 120)
+end
+
+function update_enemies()
+  for e in all(enemies) do
+    e.y = e.y + e.spd
+    if e.y > 132 then
+      del(enemies, e)
+      score = score + 1
+    end
+  end
+end
+
+function check_collision()
+  for e in all(enemies) do
+    if abs(e.x - player.x) < 6 and abs(e.y - player.y) < 6 then
+      del(enemies, e)
+      lose_life()
+    end
+  end
+end
+
+function lose_life()
+  lives = lives - 1
+  if lives <= 0 then
+    state = ""over""
+  end
+end
+
+function draw_hud()
+  print(""score "" .. score, 2, 2, 7)
+  print(""lives "" .. lives, 90, 2, 8)
+end
+
+function _update()
+  if state == ""over"" then
+    if btnp(4) then reset_game() end
+    return
+  end
+  move_player()
+  update_enemies()
+  check_collision()
+  if rnd(1) < 0.04 then spawn_enemy() end
+end
+
+function _draw()
+  cls(1)
+  spr(1, player.x, player.y)
+  for e in all(enemies) do
+    spr(2, e.x, e.y)
+  end
+  draw_hud()
+  if state == ""over"" then
+    print(""game over"", 44, 60, 7)
+  end
+end
+
+```
+
+Question (dodge.p8.lua): Ticket: add a score multiplier that doubles the score gained per dodge after the player has survived 10 enemies. Break this ticket into ordered small implementation steps, and name the function(s) each step touches."

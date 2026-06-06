@@ -1,0 +1,9 @@
+,qwen3-0.6b,llama3.2-1b,qwen2.5-1.5b,gemma2-2b,qwen2.5-3b,phi3.5-mini,qwen2.5-7b
+code-grep-spr,0.2,0.6,1.0,0.8,1.0,0.8,1.0
+code-locate-spawn,0.4,0.6,0.6,0.8,0.8,1.0,1.0
+code-count-funcs,0.2,0.8,0.6,0.6,0.6,0.8,0.6
+code-explain-update-enemies,0.2,0.0,0.2,0.8,0.6,0.6,0.8
+code-locate-loselife,0.4,0.0,0.4,0.4,0.4,0.8,0.6
+code-count-callers,0.2,0.2,0.0,0.6,0.2,1.0,0.8
+code-trace-collision,0.2,0.2,0.4,0.4,0.4,0.6,0.6
+code-ticket-multiplier,0.0,0.2,0.2,0.4,0.0,0.6,0.4

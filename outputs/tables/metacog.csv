@@ -1,0 +1,3 @@
+condition,enumeration_recall,selection_accuracy,name_before_use,answer_correct
+pre_training,0.0,0.0,0.0,0.5
+post_training,1.0,0.9027777777777777,1.0,0.75

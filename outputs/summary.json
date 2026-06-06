@@ -1,0 +1,21 @@
+{
+  "backend": "simulation",
+  "n_extracted_skills": 18,
+  "n_nd_skills": 9,
+  "n_tasks": 323,
+  "fixed_model": "qwen2.5-7b",
+  "skillmix_uplift_mean_pp": 7.33,
+  "self_improvement_mean_pp": 21.12,
+  "metacog_pre": {
+    "enumeration_recall": 0.0,
+    "selection_accuracy": 0.0,
+    "name_before_use": 0.0,
+    "answer_correct": 0.5
+  },
+  "metacog_post": {
+    "enumeration_recall": 1.0,
+    "selection_accuracy": 0.903,
+    "name_before_use": 1.0,
+    "answer_correct": 0.75
+  }
+}

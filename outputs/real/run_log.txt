@@ -1,0 +1,9 @@
+[real] openrouter backend, 2 models (resuming 0 cached calls)
+[real] model OK: google/gemma-3-12b-it
+[real] model OK: deepseek/deepseek-v4-flash
+[real] grid: gemma-3-12b-it done (1/2 models)
+[real] grid: deepseek-v4-flash done (2/2 models)
+[real] grid -> C:\Personal\AI-ML\skill-metacognition-pipeline\outputs\real\figures\fig_real_grid.png
+[real] real-vs-sim (deepseek-v4-flash) mean|delta| = 40.0 pp
+[real] metacog post selection_accuracy 0.62
+[real summary] {"backend": "openrouter", "sim_model": "qwen2.5-7b", "trials": 1, "n_slice_tasks": 10, "models": ["gemma-3-12b-it", "deepseek-v4-flash"], "primary": "deepseek-v4-flash", "real_vs_sim_mae_pp": 40.0, "metacog_post": {"enumeration_recall": 0.75, "selection_accuracy": 0.625, "name_before_use": 0.667, "answer_correct": 0.75}, "metacog_pre": {"enumeration_recall": 0.0, "selection_accuracy": 0.125, "name_before_use": 0.0, "answer_correct": 0.75}, "cached_calls": 31}

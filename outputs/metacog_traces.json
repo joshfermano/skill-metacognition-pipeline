@@ -1,0 +1,188 @@
+[
+  {
+    "task_uid": "60fd-afb3-8a1a-f2c5",
+    "label": "validate (Robotics)",
+    "model": "qwen2.5-7b",
+    "condition": "pre_training",
+    "steps": [
+      {
+        "candidates": [],
+        "candidate_uids": [],
+        "chosen": "",
+        "chosen_uid": null,
+        "why": "",
+        "applied": "",
+        "named_before_use": false
+      }
+    ],
+    "answer": "done",
+    "raw": "Step 1: I work through part 1 of the task.\nANSWER: done",
+    "passed": true,
+    "score": 1.0,
+    "interrogation": {}
+  },
+  {
+    "task_uid": "3036-306d-7b0d-b344",
+    "label": "draw (Health)",
+    "model": "qwen2.5-7b",
+    "condition": "pre_training",
+    "steps": [
+      {
+        "candidates": [],
+        "candidate_uids": [],
+        "chosen": "",
+        "chosen_uid": null,
+        "why": "",
+        "applied": "",
+        "named_before_use": false
+      }
+    ],
+    "answer": "done",
+    "raw": "Step 1: I work through part 1 of the task.\nANSWER: done",
+    "passed": true,
+    "score": 1.0,
+    "interrogation": {}
+  },
+  {
+    "task_uid": "e3a0-ed32-7dee-1227",
+    "label": "detect-mask (Energy)",
+    "model": "qwen2.5-7b",
+    "condition": "pre_training",
+    "steps": [
+      {
+        "candidates": [],
+        "candidate_uids": [],
+        "chosen": "",
+        "chosen_uid": null,
+        "why": "",
+        "applied": "",
+        "named_before_use": false
+      },
+      {
+        "candidates": [],
+        "candidate_uids": [],
+        "chosen": "",
+        "chosen_uid": null,
+        "why": "",
+        "applied": "",
+        "named_before_use": false
+      }
+    ],
+    "answer": "done",
+    "raw": "Step 1: I work through part 1 of the task.\nStep 2: I work through part 2 of the task.\nANSWER: done",
+    "passed": true,
+    "score": 1.0,
+    "interrogation": {}
+  },
+  {
+    "task_uid": "60fd-afb3-8a1a-f2c5",
+    "label": "validate (Robotics)",
+    "model": "qwen2.5-7b",
+    "condition": "post_training",
+    "steps": [
+      {
+        "candidates": [
+          "validate numeric answer exactly",
+          "negate reductio ad absurdum"
+        ],
+        "candidate_uids": [
+          "9b93-d7b5-580a-9459",
+          "d99b-3d1e-59b2-7635"
+        ],
+        "chosen": "validate numeric answer exactly",
+        "chosen_uid": "9b93-d7b5-580a-9459",
+        "why": "it matches sub-goal 1 better than the alternative.",
+        "applied": "applying validate numeric answer exactly to advance the solution.",
+        "named_before_use": true
+      }
+    ],
+    "answer": "done",
+    "raw": "STEP 1:\nCANDIDATE SKILLS: validate numeric answer exactly, negate reductio ad absurdum\nCHOSEN SKILL: validate numeric answer exactly\nWHY: it matches sub-goal 1 better than the alternative.\nAPPLY: applying validate numeric answer exactly to advance the solution.\nANSWER: done",
+    "passed": true,
+    "score": 1.0,
+    "interrogation": {
+      "step": 0,
+      "question": "In your solution you chose 'validate numeric answer exactly'. Explain why you chose it rather than negate reductio ad absurdum.",
+      "answer": "I chose 'validate numeric answer exactly' because it directly addresses this step's sub-goal, whereas negate reductio ad absurdum would not advance the proof here."
+    }
+  },
+  {
+    "task_uid": "3036-306d-7b0d-b344",
+    "label": "draw (Health)",
+    "model": "qwen2.5-7b",
+    "condition": "post_training",
+    "steps": [
+      {
+        "candidates": [
+          "draw vivid sensory analogy",
+          "explain code block behavior"
+        ],
+        "candidate_uids": [
+          "8126-24c9-5cd1-b984",
+          "52aa-5fb9-3c0d-1d73"
+        ],
+        "chosen": "draw vivid sensory analogy",
+        "chosen_uid": "8126-24c9-5cd1-b984",
+        "why": "it matches sub-goal 1 better than the alternative.",
+        "applied": "applying draw vivid sensory analogy to advance the solution.",
+        "named_before_use": true
+      }
+    ],
+    "answer": "done",
+    "raw": "STEP 1:\nCANDIDATE SKILLS: draw vivid sensory analogy, explain code block behavior\nCHOSEN SKILL: draw vivid sensory analogy\nWHY: it matches sub-goal 1 better than the alternative.\nAPPLY: applying draw vivid sensory analogy to advance the solution.\nANSWER: done",
+    "passed": true,
+    "score": 1.0,
+    "interrogation": {
+      "step": 0,
+      "question": "In your solution you chose 'draw vivid sensory analogy'. Explain why you chose it rather than explain code block behavior.",
+      "answer": "I chose 'draw vivid sensory analogy' because it directly addresses this step's sub-goal, whereas explain code block behavior would not advance the proof here."
+    }
+  },
+  {
+    "task_uid": "e3a0-ed32-7dee-1227",
+    "label": "detect-mask (Energy)",
+    "model": "qwen2.5-7b",
+    "condition": "post_training",
+    "steps": [
+      {
+        "candidates": [
+          "detect self serving attribution",
+          "infer hidden speaker intention"
+        ],
+        "candidate_uids": [
+          "9497-0a31-bdac-d752",
+          "0cd2-0be4-551b-3df9"
+        ],
+        "chosen": "detect self serving attribution",
+        "chosen_uid": "9497-0a31-bdac-d752",
+        "why": "it matches sub-goal 1 better than the alternative.",
+        "applied": "applying detect self serving attribution to advance the solution.",
+        "named_before_use": true
+      },
+      {
+        "candidates": [
+          "mask personally identifiable token",
+          "trace call dependencies"
+        ],
+        "candidate_uids": [
+          "8f7d-c7b7-a67c-1b42",
+          "052b-c29e-c098-be69"
+        ],
+        "chosen": "trace call dependencies",
+        "chosen_uid": "052b-c29e-c098-be69",
+        "why": "it matches sub-goal 2 better than the alternative.",
+        "applied": "applying trace call dependencies to advance the solution.",
+        "named_before_use": true
+      }
+    ],
+    "answer": "done",
+    "raw": "STEP 1:\nCANDIDATE SKILLS: detect self serving attribution, infer hidden speaker intention\nCHOSEN SKILL: detect self serving attribution\nWHY: it matches sub-goal 1 better than the alternative.\nAPPLY: applying detect self serving attribution to advance the solution.\nSTEP 2:\nCANDIDATE SKILLS: mask personally identifiable token, trace call dependencies\nCHOSEN SKILL: trace call dependencies\nWHY: it matches sub-goal 2 better than the alternative.\nAPPLY: applying trace call dependencies to advance the solution.\nANSWER: done",
+    "passed": true,
+    "score": 1.0,
+    "interrogation": {
+      "step": 0,
+      "question": "In your solution you chose 'detect self serving attribution'. Explain why you chose it rather than infer hidden speaker intention.",
+      "answer": "I chose 'detect self serving attribution' because it directly addresses this step's sub-goal, whereas infer hidden speaker intention would not advance the proof here."
+    }
+  }
+]
