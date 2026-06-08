@@ -1,25 +1,10 @@
-"""
-Task generation.
+"""Task generation.
 
-Following Skill-Mix (Yu et al., 2023) and Instruct-SkillMix (Kaur et al., 2024),
-tasks are built by sampling k skills and asking for an artefact that exercises
-all of them. Each task carries:
-
-  uid           : Uint64 hex (uids.task_uid)
-  prompt        : the instruction shown to the model
-  family        : domain tag (logic | math | code | language | safety | mixed)
-  skill_uids    : required skills (the "required together" set)
-  skill_names   : their canonical names
-  difficulty    : IRT difficulty b (logit scale); rises with k and skill load
-  gold          : reference answer (for deterministic verification where possible)
-  base_uplift   : how much a *curated* skill helps this task (logit units). Most
-                  are positive; a minority are <=0 to reproduce the SkillsBench
-                  observation that some skills do not help (or hurt).
-
-Three task sets are produced:
-  * natural-deduction proof tasks  -> skill-pair co-failure heatmap
-  * language-XXXX tasks            -> baseline vs uplift heatmap (4 small models)
-  * broad mixed tasks              -> SkillsBench-style model x task grid
+A task samples k skills and asks for an artefact that exercises all of them.
+Three sets are produced: natural-deduction proofs (skill-pair co-failure heatmap),
+language-XXXX tasks (baseline vs uplift), and broad mixed tasks (model x task grid).
+base_uplift is the curated-skill effect in logit units; a minority are <=0 to
+reproduce the finding that some skills do not help, or hurt.
 """
 
 from __future__ import annotations
@@ -59,14 +44,12 @@ def _difficulty_from(skills: list[Skill], k: int, rng: np.random.Generator) -> f
     return float(base + rng.normal(0, 0.35))
 
 
-# ----------------------------------------------------------------------------- #
 # Natural-deduction proof tasks (skill-pair co-failure heatmap)
-# ----------------------------------------------------------------------------- #
 def natural_deduction_tasks(k: int = 2, per_pair: int = 6) -> list[Task]:
-    """Generate propositional-logic proof tasks, each requiring k ND rules.
+    """Propositional-logic proof tasks, each requiring k ND rules.
 
-    `per_pair` controls how many tasks are generated per unordered skill pair, so
-    the co-failure matrix has a sensible support count (n=...) per cell.
+    per_pair sets the tasks generated per unordered skill pair, which fixes the
+    support count per co-failure cell.
     """
     nd = build_skill_library()["natural_deduction"]
     by_symbol = {s.symbol: s for s in nd}
@@ -84,7 +67,7 @@ def natural_deduction_tasks(k: int = 2, per_pair: int = 6) -> list[Task]:
                       f"{premises}. Cite the inference rule at each line "
                       f"(rules to use: {', '.join(combo)}).")
             uid = task_uid(prompt + f"#{j}")
-            diff = _difficulty_from(skills, k, rng) + 0.4  # logic runs harder
+            diff = _difficulty_from(skills, k, rng) + 0.4  # logic skews harder
             tasks.append(Task(
                 uid=uid, label=f"nd-{'-'.join(combo)}-{j}", prompt=prompt,
                 family="logic", skill_uids=[s.uid for s in skills],
@@ -95,14 +78,12 @@ def natural_deduction_tasks(k: int = 2, per_pair: int = 6) -> list[Task]:
     return tasks
 
 
-# ----------------------------------------------------------------------------- #
 # language-XXXX tasks (baseline vs uplift heatmap)
-# ----------------------------------------------------------------------------- #
 def language_tasks(n: int = 15) -> list[Task]:
-    """Short language/instruction-following tasks, mirroring the brief's image.
+    """Short language/instruction-following tasks.
 
-    Some tasks get a near-zero or negative base_uplift so the uplift panel shows
-    the realistic mix of helped / unaffected / hurt seen in SkillsBench.
+    Some tasks get a near-zero or negative base_uplift so the uplift panel shows a
+    mix of helped, unaffected, and hurt.
     """
     lib = build_skill_library()["extracted"]
     lang = [s for s in lib if s.family in ("language", "safety")]
@@ -120,7 +101,7 @@ def language_tasks(n: int = 15) -> list[Task]:
         prompt = tmpl.format(sk=skill.name)
         uid = task_uid(prompt + f"::{i}")
         label = f"language-{stable_uint64(uid, namespace='lang') & 0xffffffff:08x}"
-        diff = _difficulty_from([skill], 1, rng) + 1.4  # tuned so small models mostly fail baseline
+        diff = _difficulty_from([skill], 1, rng) + 1.4  # offset so small models mostly fail baseline
         # Mixed uplift: ~65% helpful, ~20% neutral, ~15% harmful.
         roll = rng.random()
         uplift = (rng.uniform(0.4, 1.2) if roll < 0.65
@@ -134,15 +115,13 @@ def language_tasks(n: int = 15) -> list[Task]:
     return tasks
 
 
-# ----------------------------------------------------------------------------- #
-# Broad mixed tasks (SkillsBench-style model x task grid)
-# ----------------------------------------------------------------------------- #
+# Broad mixed tasks (model x task grid)
 _DOMAINS = ["SW Eng", "Science", "Office", "Finance", "Media", "Cyber",
             "Health", "Robotics", "Energy", "Math", "Mfg"]
 
 
 def broad_tasks(n: int = 84) -> list[Task]:
-    """A spread of tasks across domains and difficulty (easy -> very hard)."""
+    """Tasks spread across domains and difficulty, easy to very hard."""
     lib = build_skill_library()["extracted"]
     tasks: list[Task] = []
     for i in range(n):
@@ -154,7 +133,7 @@ def broad_tasks(n: int = 84) -> list[Task]:
         prompt = (f"[{domain}] Complete a task requiring: "
                   + ", ".join(s.name for s in skills) + ".")
         uid = task_uid(prompt + f"@{i}")
-        # Spread difficulty widely so the grid spans uniformly-easy to uniformly-hard.
+        # Spread difficulty widely so the grid spans easy to hard rows.
         spread = np.linspace(-1.5, 3.2, n)[i]
         diff = float(spread + _difficulty_from(skills, k, rng) * 0.3)
         tasks.append(Task(

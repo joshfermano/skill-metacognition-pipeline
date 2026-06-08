@@ -1,17 +1,10 @@
-"""
-Code-derived tasks.
+"""Tasks derived from a real code file.
 
-The task notes suggest deriving tasks from real code (Cortex Command, or PICO-8
-carts -- 4-32KB Lua text files): code navigation, code explanation, file
-operations (open / read / grep), and breaking a large ticket into small steps,
-with a chain of thought and per-step skill extraction. This module parses a
-small, self-contained PICO-8-style Lua file (data/code/dodge.p8.lua) and builds
-tasks whose answers are checkable directly against the source, so a real model
-run is graded by a deterministic verifier rather than a rubric proxy.
-
-Each task references the fixed `code` skill family (skills.load_code_skills),
-spans the brief's large -> medium -> small range (a locate is one step; a ticket
-decomposition is many), and is sorted by difficulty when run.
+Parses a self-contained PICO-8-style Lua file (data/code/dodge.p8.lua) into
+navigation, grep, trace, explanation, and ticket-decomposition tasks. Answers are
+checkable against the source, so a real run is graded by a deterministic verifier
+rather than a rubric proxy. Tasks reference the fixed `code` skill family and span
+one-step locates to multi-step ticket breakdowns.
 """
 
 from __future__ import annotations
@@ -34,7 +27,7 @@ def _load(fname: str = "dodge.p8.lua") -> tuple[str, list[str]]:
 
 
 def count_calls(text: str, name: str) -> int:
-    """Call sites of `name` = all `name(` occurrences minus its definition."""
+    """Call sites of `name`: all `name(` occurrences minus its definition."""
     total = len(re.findall(rf"\b{re.escape(name)}\s*\(", text))
     defs = len(re.findall(rf"function\s+{re.escape(name)}\s*\(", text))
     return total - defs
@@ -57,8 +50,7 @@ def code_tasks(fname: str = "dodge.p8.lua") -> list[Task]:
 
     tasks: list[Task] = []
 
-    # The source is embedded in every prompt so a real model can actually answer
-    # (it has no file-system tools here). The label keeps the short task id.
+    # Embed the source in every prompt; the model has no file-system tools here.
     src_header = f"Source file `{fname}`:\n```lua\n{text}\n```\n\n"
 
     def mk(label, prompt, gold, skills, difficulty, uplift=0.6, meta=None):

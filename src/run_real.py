@@ -1,28 +1,14 @@
-"""
-Real open-model run with on-disk caching.
+"""Real open-model run with on-disk caching, writing to outputs/real/.
 
-Evaluates a small task slice on real open-weight models served by an OpenAI-
-compatible gateway (OpenRouter by default; Groq also supported), and writes the
-results under outputs/real/ so they sit beside the always-reproducible
-simulation outputs in outputs/. Produces:
+Evaluates a small task slice on real open-weight models via an OpenAI-compatible
+gateway (OpenRouter by default, Groq also supported) and produces a real model x
+task grid, a real-vs-simulation comparison, and metacognition traces. Every call
+is cached so a committed cache replays with no key:
 
-  * a real model x task grid over several open models (the SkillsBench-style
-    figure, but measured),
-  * a real-versus-simulation comparison for a primary model,
-  * genuine metacognition scaffolding traces (enumerate -> choose -> name ->
-    justify) for the primary model.
-
-Every model call is memoised by src.models.CachedBackend to
-outputs/real/raw_cache.json. Committing that cache lets the report and dashboard
-show the real numbers with no API key:
-
-    # keys live in .env (git-ignored) or the environment
     python -m src.run_real                 # real run, records the cache
     python -m src.run_real --use-cache     # replay the committed cache, no key
 
-The API key is read only from the environment / .env by the backend; it is never
-part of the cache. This run validates a slice; the full grid stays in outputs/ on
-the simulation backend, clearly labelled.
+The API key is read only from the environment or .env, never cached.
 """
 
 from __future__ import annotations
@@ -49,10 +35,9 @@ TABR = OUTR / "tables"
 FIGR = OUTR / "figures"
 CACHE = OUTR / "raw_cache.json"
 
-# Open-weight models on OpenRouter, ordered roughly weak -> strong for the grid.
-# Paid, fast, non-queuing models so the run finishes in a few minutes. The ':free'
-# variants (kimi, nemotron) queue heavily on the free tier and can stall the run;
-# add them with --models and a higher TIMEOUT if you want them and can wait.
+# Open-weight models on OpenRouter, ordered roughly weak -> strong. Fast,
+# non-queuing models so the run finishes in a few minutes; the ':free' variants
+# queue heavily and can stall, so add them via --models with a higher TIMEOUT.
 DEFAULT_MODELS = [
     "google/gemma-3-12b-it",
     "deepseek/deepseek-v4-flash",
@@ -61,11 +46,9 @@ DEFAULT_PRIMARY = "deepseek/deepseek-v4-flash"   # fast + capable, for traces/co
 
 
 def _load_dotenv(path: Path = ROOT / ".env") -> None:
-    """Load KEY=VALUE lines from a local .env into the environment if present.
+    """Load KEY=VALUE lines from a git-ignored .env, without overriding the shell.
 
-    Dependency-free; only sets variables not already in the environment, so a
-    real shell export always wins. The .env file is git-ignored and must never
-    be committed.
+    A real shell export always wins, since variables already set are left alone.
     """
     import os
     if not path.exists():
@@ -79,12 +62,12 @@ def _load_dotenv(path: Path = ROOT / ".env") -> None:
 
 
 def short_name(slug: str) -> str:
-    """A compact display/column name for a provider slug."""
+    """Compact display/column name for a provider slug."""
     return slug.split(":")[0].split("/")[-1]
 
 
 def build_slice():
-    """A small mixed slice: deterministic-gold code + logic, plus a couple broad."""
+    """Small mixed slice: deterministic-gold code and logic, plus a couple broad."""
     code = code_tasks()
     nd = natural_deduction_tasks(k=2, per_pair=1)[:2]
     broad = sorted(broad_tasks(18), key=lambda t: t.difficulty)
@@ -106,10 +89,10 @@ def preflight(backend, models, log):
 
 
 def build_grid(backend, tasks, model_slugs, n_trials, log, save_cb=None):
-    """Robust model x task pass-rate grid; a failing call becomes NaN, not a crash.
+    """Model x task pass-rate grid; a failing call becomes NaN, not a crash.
 
-    Persists the partial CSV (via save_cb) after each model so a capped or
-    interrupted run still leaves usable real data on disk.
+    Persists the partial CSV via save_cb after each model, so an interrupted run
+    still leaves usable data on disk.
     """
     cols = {}
     for i, slug in enumerate(model_slugs, 1):
@@ -125,7 +108,7 @@ def build_grid(backend, tasks, model_slugs, n_trials, log, save_cb=None):
             save_cb(pd.DataFrame(cols))               # incremental persist
         log(f"[real] grid: {short_name(slug)} done ({i}/{len(model_slugs)} models)")
     grid = pd.DataFrame(cols)
-    # Easy (high mean pass) at the top, hard at the bottom.
+    # Highest mean pass rate (easiest) at the top.
     grid = grid.loc[grid.mean(axis=1, skipna=True).sort_values(ascending=False).index]
     return grid
 
@@ -163,9 +146,8 @@ def main():
     sim = SimulationBackend()
     lib = build_skill_library()
     code, nd, broad = build_slice()
-    # Only genuinely answerable tasks: the code tasks now embed their source and
-    # the natural-deduction tasks carry their premises. The broad tasks are
-    # deliberately vague difficulty probes, so they are left out of the real run.
+    # Only self-contained tasks: code embeds its source, ND carries its premises.
+    # The broad tasks are vague difficulty probes, so they are left out here.
     slice_tasks = code + nd
 
     summary = {"backend": args.backend, "sim_model": args.sim_model,

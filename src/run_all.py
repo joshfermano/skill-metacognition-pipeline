@@ -1,18 +1,8 @@
-"""
-End-to-end runner.
+"""End-to-end runner: builds every table and figure under outputs/.
 
     python -m src.run_all                 # simulation backend (default)
     python -m src.run_all --backend ollama
     python -m src.run_all --backend hf
-
-Produces, under outputs/:
-    tables/skills.csv, tables/tasks.csv
-    tables/model_task_pass.csv, tables/skill_pair_failure.csv
-    tables/baseline.csv, tables/uplift.csv, tables/self_improvement.csv
-    figures/fig1_model_task_grid.png
-    figures/fig2_skill_pair_failure.png
-    figures/fig3_baseline_uplift.png
-    figures/fig4_self_improvement.png
 """
 
 from __future__ import annotations
@@ -40,7 +30,7 @@ def export_skills(lib):
     for grp, skills in lib.items():
         for s in skills:
             rows.append({"group": grp, "skill_uid": s.uid, "name": s.name,
-                         "slug": s.name.replace(" ", "_"),  # 4-word underscore form
+                         "slug": s.name.replace(" ", "_"),  # underscore slug
                          "family": s.family, "cognitive_rank": s.cognitive_rank,
                          "symbol": s.symbol or "", "n_members": len(s.members)})
     df = pd.DataFrame(rows)
@@ -71,7 +61,7 @@ def main():
                     help="run the metacognitive scaffolding eval (fig5). --no-metacog to skip.")
     args = ap.parse_args()
 
-    # 'small' scale keeps a real (OpenRouter/Ollama) run inside free rate limits.
+    # 'small' scale keeps a real run inside free rate limits.
     if args.scale == "small":
         args.trials = min(args.trials, 2)
         n_nd_per_pair, n_lang, n_broad = 1, 8, 18
@@ -80,8 +70,7 @@ def main():
         n_nd_per_pair, n_lang, n_broad = 6, 15, 84
         default_models = list(MODEL_ROSTER)
 
-    # Groq has no sub-8B models; use its open-model lineup and the 8B workhorse as
-    # the fixed model (highest free-tier RPD) unless the user overrides.
+    # Groq has no sub-8B models; use its open-model lineup unless overridden.
     if args.backend == "groq" and not args.models:
         default_models = ["llama3.1-8b", "qwen3-32b", "llama3.3-70b", "gpt-oss-120b"]
         if args.fixed_model == "qwen2.5-7b":
@@ -156,8 +145,7 @@ def main():
         metacog_summary, mc_traces = P.metacog_eval(backend, mc_tasks, args.fixed_model, lib)
         metacog_summary.to_csv(TAB / "metacog.csv")
         f5 = plots.plot_metacog(metacog_summary, args.fixed_model, "fig5_metacog.png")
-        # Serialise a few full traces (with an interrogation on the post-training
-        # ones) for the report and dashboard.
+        # Serialise a few full traces for the report and dashboard.
         by_uid = {t.uid: t for t in mc_tasks}
         shown_labels = {t.label for t in mc_tasks[:3]}
         examples = []

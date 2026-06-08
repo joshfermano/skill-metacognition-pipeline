@@ -1,29 +1,10 @@
-"""
-Skill extraction and clustering.
+"""Skill extraction and clustering.
 
-This implements the two-stage metacognition procedure of Didolkar et al. (2024,
-arXiv:2405.12205):
-
-  Stage 1 (fine-grained labelling): a teacher LLM names the skill exercised by
-      each problem/solution with a short human-interpretable phrase. Offline we
-      consume a precollected list of such phrases (data/seed_skills.json), which
-      stands in for the teacher's per-example labels. In `llm` mode the same
-      step is performed live by a model via models.label_skill().
-
-  Stage 2 (semantic clustering): the many fine-grained phrases are merged into a
-      smaller set of coarse "complex skills". Didolkar et al. asked a frontier
-      model to cluster; offline we cluster with TF-IDF features + agglomerative
-      clustering (CPU-only, no model download), which is deterministic and fully
-      reproducible. The cluster medoid becomes the canonical skill.
-
-Each coarse skill receives:
-  * a 4-word canonical name (brief, human-interpretable, per the brief),
-  * a Uint64 hex UID (uids.skill_uid),
-  * a cognitive-load rank used to sort skills single/cognitive -> hard.
-
-The natural-deduction inference rules are loaded as a fixed, canonically named
-skill family (used for the skill-pair co-failure heatmap), since they already
-have standard names/symbols.
+Two stages: fine-grained phrases (read from data/seed_skills.json, or labelled
+live in `llm` mode) are merged into coarse skills by TF-IDF + agglomerative
+clustering, and the cluster medoid becomes the canonical skill. Each skill gets a
+4-word name, a Uint64 hex UID, and a cognitive-load rank for sorting. The
+natural-deduction rules load as a fixed, pre-named family.
 """
 
 from __future__ import annotations
@@ -41,8 +22,7 @@ from .uids import skill_uid
 
 DATA = Path(__file__).resolve().parent.parent / "data"
 
-# Heuristic ranking of cognitive load by signal words, used only to order skills
-# from "single / cognitive" (low) to "hard / compositional" (high) for display.
+# Signal words that map a skill to a cognitive-load rank, used only for display order.
 _LOAD_HINTS = {
     1: ["assume", "read", "grep", "locate", "cite", "extract", "mask", "redact"],
     2: ["paraphrase", "summarize", "introduce", "eliminate", "convert", "follow", "obey", "rank", "validate"],
@@ -89,11 +69,7 @@ def _cognitive_rank(phrase: str) -> int:
 
 
 def _to_four_words(phrase: str) -> str:
-    """Reduce a fine-grained phrase to a short (<=4 word) canonical name.
-
-    Keeps the first up-to-four meaningful, de-duplicated tokens. We do not pad by
-    repeating words; a clean 2-3 word name is preferable to a padded one.
-    """
+    """Reduce a phrase to its first up-to-four meaningful, de-duplicated tokens."""
     stop = {"a", "an", "the", "to", "of", "for", "into", "from", "with", "via",
             "and", "another", "without", "s", "its", "in", "two", "one", "both"}
     tokens = [t for t in re.findall(r"[a-zA-Z]+", phrase.lower()) if t not in stop]
@@ -124,12 +100,8 @@ def load_natural_deduction_skills() -> list[Skill]:
 
 
 def load_code_skills() -> list[Skill]:
-    """Fixed code-navigation skill family used by the code-derived tasks.
-
-    Loaded as a stable family (like the natural-deduction rules) so each
-    code-task references a deterministic skill uid rather than depending on
-    where a phrase happens to land in the clustering.
-    """
+    """Fixed code-navigation skill family, so each code task references a stable uid
+    rather than depending on where a phrase lands in the clustering."""
     raw = json.loads((DATA / "seed_skills.json").read_text()).get("code_skills", [])
     skills = []
     for r in raw:
@@ -148,13 +120,10 @@ def load_code_skills() -> list[Skill]:
 def _agglomerative_average(D: np.ndarray, n_clusters: int) -> np.ndarray:
     """Average-linkage agglomerative clustering from a precomputed distance matrix.
 
-    A small, dependency-free stand-in for sklearn's AgglomerativeClustering
-    (metric='precomputed', linkage='average'). The corpus is tiny (tens of
-    phrases) so the naive O(n^3) merge loop is irrelevant in cost, and removing
-    the sklearn.cluster dependency keeps the pipeline runnable where that
-    compiled module is unavailable. Merges the two clusters with the smallest
-    mean cross-pair distance until n_clusters remain; ties break on the
-    lexicographically smallest cluster-id pair, so the result is deterministic.
+    Hand-rolled to avoid sklearn.cluster, whose compiled DLL is blocked on this
+    machine; the corpus is tiny so the naive O(n^3) merge loop is fine. Merges the
+    pair with the smallest mean cross-pair distance, breaking ties on the smallest
+    cluster-id pair so the result is deterministic.
     """
     clusters: dict[int, list[int]] = {i: [i] for i in range(D.shape[0])}
     while len(clusters) > n_clusters:
@@ -164,7 +133,7 @@ def _agglomerative_average(D: np.ndarray, n_clusters: int) -> np.ndarray:
             for bi in range(ai + 1, len(ids)):
                 a, b = ids[ai], ids[bi]
                 d = float(D[np.ix_(clusters[a], clusters[b])].mean())
-                if d < best_d:          # first minimum wins -> smallest (a, b)
+                if d < best_d:          # first minimum wins, so smallest (a, b)
                     best_d, best = d, (a, b)
         a, b = best
         clusters[a].extend(clusters[b])
@@ -177,11 +146,10 @@ def _agglomerative_average(D: np.ndarray, n_clusters: int) -> np.ndarray:
 
 
 def extract_skills(n_clusters: int = 18, seed: int = 0) -> list[Skill]:
-    """Stage 1 + Stage 2 over the fine-grained seed corpus -> coarse skills."""
+    """Cluster the fine-grained seed corpus into coarse skills."""
     phrases = json.loads((DATA / "seed_skills.json").read_text())["fine_grained_skills"]
     vec = TfidfVectorizer(ngram_range=(1, 2), min_df=1, sublinear_tf=True)
     X = vec.fit_transform(phrases)
-    # Cosine distance + average linkage clusters semantically related phrases.
     D = cosine_distances(X)
     n_clusters = min(n_clusters, len(phrases))
     labels = _agglomerative_average(D, n_clusters)
@@ -192,7 +160,7 @@ def extract_skills(n_clusters: int = 18, seed: int = 0) -> list[Skill]:
         idx = [i for i, l in enumerate(labels) if l == c]
         if not idx:
             continue
-        # Medoid = phrase closest to the cluster centroid -> canonical member.
+        # Canonical member = phrase closest to the cluster centroid.
         centroid = Xd[idx].mean(axis=0, keepdims=True)
         dists = cosine_distances(Xd[idx], centroid).ravel()
         medoid = phrases[idx[int(np.argmin(dists))]]
@@ -206,13 +174,13 @@ def extract_skills(n_clusters: int = 18, seed: int = 0) -> list[Skill]:
             members=members,
             cognitive_rank=rank,
         ))
-    # Sort single/cognitive (low rank) -> hard/compositional (high rank).
+    # Sort low cognitive load to high.
     skills.sort(key=lambda s: (s.cognitive_rank, s.family, s.name))
     return skills
 
 
 def build_skill_library(n_clusters: int = 18) -> dict[str, list[Skill]]:
-    """Full skill library: extracted coarse skills + natural-deduction + code families."""
+    """Full skill library: extracted, natural-deduction, and code families."""
     return {
         "extracted": extract_skills(n_clusters=n_clusters),
         "natural_deduction": load_natural_deduction_skills(),

@@ -1,20 +1,10 @@
-"""
-Grading and skill detection.
+"""Skill-Mix grading and skill detection.
 
-Skill-Mix grading (Yu et al., 2023): a generation that targets k skills is scored
-out of (k + 3) points -- one point per correctly illustrated skill, plus one each
-for being on-topic, coherent ("makes sense"), and respecting the length limit.
-From the per-criterion points we derive the paper's three metrics:
-
-  * Ratio of Full Marks : 1 iff all (k + 3) points are awarded.
-  * Ratio of All Skills : 1 iff all k skill points are awarded and >= 2 of the
-                          3 remaining points (tolerates one slip on
-                          topic/coherence/length).
-  * Skill Fraction      : (skills awarded / k) iff all 3 remaining points are
-                          awarded, else 0.
-
-For logic/math tasks we also expose a deterministic verifier (gold-answer match),
-which Skill-Mix-style rubric grading complements rather than replaces.
+A k-skill generation is scored out of k + 3 points: one per skill, plus on-topic,
+coherent, and within length. From these come three metrics: Ratio of Full Marks
+(all k + 3 awarded), Ratio of All Skills (all k skills and >= 2 of the other 3),
+and Skill Fraction (skills/k when all 3 others are awarded, else 0). Logic, math,
+and code tasks also have a deterministic gold-answer verifier.
 """
 
 from __future__ import annotations
@@ -32,9 +22,7 @@ class GradeResult:
     used_skills: list[str]       # skill UIDs detected in the CoT
 
 
-# --------------------------------------------------------------------------- #
 # Skill-Mix metrics
-# --------------------------------------------------------------------------- #
 def ratio_full_marks(skill_points: int, other_points: int, k: int) -> int:
     return int(skill_points + other_points == k + 3)
 
@@ -47,14 +35,11 @@ def skill_fraction(skill_points: int, other_points: int, k: int) -> float:
     return (skill_points / k) if other_points == 3 and k > 0 else 0.0
 
 
-# --------------------------------------------------------------------------- #
 # Skill detection from chain-of-thought
-# --------------------------------------------------------------------------- #
 def detect_skills(cot: str, candidate_skills) -> list[str]:
-    """Return UIDs of candidate skills whose name/symbol appears in the CoT.
+    """Return UIDs of candidate skills whose name or symbol appears in the CoT.
 
-    A lightweight stand-in for the metacognition skill-labelling step applied to
-    a solution trace. In `llm` mode a model performs this labelling instead.
+    In `llm` mode a model performs this labelling instead.
     """
     found = []
     low = cot.lower()
@@ -63,7 +48,7 @@ def detect_skills(cot: str, candidate_skills) -> list[str]:
         if not hit and getattr(s, "symbol", None):
             hit = s.symbol in cot
         if not hit:
-            # token-overlap fallback: >=2 content words from the name present
+            # fallback: >=2 content words from the name present
             toks = [t for t in re.findall(r"[a-z]+", s.name.lower()) if len(t) > 3]
             hit = sum(t in low for t in toks) >= max(2, len(toks) - 1)
         if hit:
@@ -71,16 +56,13 @@ def detect_skills(cot: str, candidate_skills) -> list[str]:
     return found
 
 
-# --------------------------------------------------------------------------- #
 # Grading entry point (real backends)
-# --------------------------------------------------------------------------- #
 def grade(task, answer: str, cot: str, candidate_skills=None) -> GradeResult:
     """Grade a real model's output for a task.
 
-    Logic/math tasks: deterministic verifier on the gold answer.
-    Other tasks: a rubric proxy (coverage of required skill names + coherence
-    heuristics). This is the place to plug in an LLM grader with the Skill-Mix
-    grading prompt if a stronger judge is available.
+    Logic, math, and code tasks with a gold answer use a deterministic verifier;
+    other tasks use a rubric proxy (skill coverage plus coherence heuristics). Swap
+    in an LLM judge here if a stronger one is available.
     """
     used = detect_skills(cot, candidate_skills) if candidate_skills else []
     k = max(1, len(task.skill_uids))
@@ -92,7 +74,7 @@ def grade(task, answer: str, cot: str, candidate_skills=None) -> GradeResult:
         score = 1.0 if ok else round(0.4 * skill_pts / k, 3)
         return GradeResult(ok, score, skill_pts, other_pts, used)
 
-    # Rubric proxy for language/mixed tasks.
+    # Rubric proxy for language and mixed tasks.
     covered = len(set(used) & set(task.skill_uids))
     skill_pts = covered
     sentences = [s for s in re.split(r"[.!?]+", answer or "") if s.strip()]

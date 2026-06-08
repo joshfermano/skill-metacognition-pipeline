@@ -1,15 +1,8 @@
-"""
-Evaluation engine.
+"""Evaluation engine: the analyses behind the figures.
 
-Builds the analyses behind the three figures plus the self-improvement result:
-
-  1. model x task pass-rate matrix, rows sorted easy -> hard  (SkillsBench-style)
-  2. skill-pair co-failure matrix for a fixed model            (natural deduction)
-  3. baseline pass rate vs skill uplift (curated - baseline)   (small models)
-  4. STaR-style best-of-16 / keep-4 self-improvement, before vs after
-
-All randomness is seeded, so results reproduce exactly with the simulation
-backend; with a real backend the same code paths run live models.
+model x task pass-rate matrix, skill-pair co-failure, baseline vs uplift,
+best-of-n self-improvement, the metacognition eval, and real vs simulation. All
+randomness is seeded; the same code paths run live models on a real backend.
 """
 
 from __future__ import annotations
@@ -24,41 +17,34 @@ from .models import MODEL_ROSTER, UPLIFT_MODELS, get_backend
 from .skills import build_skill_library
 
 
-# --------------------------------------------------------------------------- #
-# Core: pass rate of a model on a task over n trials
-# --------------------------------------------------------------------------- #
+# Pass rate of a model on a task over n trials
 def pass_rate(backend, model, task, n_trials=5, uplift=0.0):
     passes = sum(backend.solve(model, task, t, uplift).passed for t in range(n_trials))
     return passes / n_trials
 
 
-# --------------------------------------------------------------------------- #
-# 1. Model x task grid, sorted easy -> hard
-# --------------------------------------------------------------------------- #
+# Model x task grid, sorted easy to hard
 def model_task_matrix(backend, tasks, models, n_trials=5) -> pd.DataFrame:
     rows = {}
     for task in tasks:
         rows[task.label] = {m: pass_rate(backend, m, task, n_trials) for m in models}
     df = pd.DataFrame(rows).T[models]
-    # Easy (high mean pass) at the top, hard (low) at the bottom.
+    # Highest mean pass rate (easiest) at the top.
     df = df.loc[df.mean(axis=1).sort_values(ascending=False).index]
     return df
 
 
-# --------------------------------------------------------------------------- #
-# 2. Skill-pair co-failure for a fixed model
-# --------------------------------------------------------------------------- #
+# Skill-pair co-failure for a fixed model
 def skill_pair_failure(backend, nd_tasks, model, n_trials=5):
-    """For every ordered pair of ND rules, failure rate over tasks needing both.
+    """Failure rate for every ordered pair of ND rules, over tasks needing both.
 
-    Returns (failure_df, count_df) indexed by the rule symbols, mirroring the
-    reference 'skill-pair failure (all_fail)' heatmap.
+    Returns (failure_df, count_df) indexed by the rule symbols.
     """
     symbols = [s.symbol for s in build_skill_library()["natural_deduction"]]
     fails = defaultdict(list)
     for task in nd_tasks:
         syms = task.meta["symbols"]
-        # binary "did the model fail this task" = majority of trials failed
+        # task counts as failed when most trials failed
         pr = pass_rate(backend, model, task, n_trials, uplift=0.0)
         failed = pr < 0.5
         for x, y in itertools.product(syms, syms):
@@ -73,9 +59,7 @@ def skill_pair_failure(backend, nd_tasks, model, n_trials=5):
     return fail_mat, cnt_mat
 
 
-# --------------------------------------------------------------------------- #
-# 3. Baseline vs uplift on language tasks for the 4 small models
-# --------------------------------------------------------------------------- #
+# Baseline vs uplift on language tasks for the 4 small models
 def baseline_uplift(backend, lang_tasks, models=UPLIFT_MODELS, n_trials=5):
     base = {}
     curated = {}
@@ -89,21 +73,16 @@ def baseline_uplift(backend, lang_tasks, models=UPLIFT_MODELS, n_trials=5):
     return base_df, uplift_df
 
 
-# --------------------------------------------------------------------------- #
-# 4. STaR-style self-improvement: best-of-16, keep 4, "train", re-evaluate
-# --------------------------------------------------------------------------- #
+# STaR-style self-improvement: best-of-16, keep 4, "train", re-evaluate
 def self_improvement(backend, tasks, model, n_sample=16, keep=4,
                      gain_per_kept=0.18, n_trials=8):
     """Rejection-sampling self-improvement (STaR / best-of-n).
 
-    For each task we draw n_sample trajectories; the correct ones are the
-    "kept" rationales (capped at `keep`). A task that yields >=1 correct sample
-    contributes training signal, modelled as an ability gain on tasks sharing its
-    skills. We then re-evaluate to report before/after pass rate.
-
-    Returns a tidy DataFrame with before/after pass rates per task.
+    Each task draws n_sample trajectories; correct ones are kept (capped at
+    `keep`). A task with >=1 correct sample contributes training signal, modelled
+    as an ability gain on tasks sharing its skills. Returns a DataFrame of
+    before/after pass rates per task.
     """
-    # before
     before = {t.label: pass_rate(backend, model, t, n_trials) for t in tasks}
 
     # collect kept rationales and per-skill training mass
@@ -115,7 +94,7 @@ def self_improvement(backend, tasks, model, n_sample=16, keep=4,
         if kept > 0:
             for uid in t.skill_uids:
                 skill_mass[uid] += kept / keep
-    # "train": ability uplift on a task proportional to training mass on its skills
+    # "train": uplift per task proportional to training mass on its skills
     after = {}
     for t in tasks:
         mass = np.mean([skill_mass.get(u, 0.0) for u in t.skill_uids]) if t.skill_uids else 0.0
@@ -127,16 +106,13 @@ def self_improvement(backend, tasks, model, n_sample=16, keep=4,
     return df.sort_values("before")
 
 
-# --------------------------------------------------------------------------- #
-# 5. Metacognitive scaffolding: pre- vs post-training enumerate/choose/justify
-# --------------------------------------------------------------------------- #
+# Metacognitive scaffolding: pre- vs post-training enumerate/choose/justify
 def metacog_eval(backend, tasks, model, lib,
                  conditions=("pre_training", "post_training")):
-    """Run the named-skill protocol (src/metacog.py) on each task under each
-    condition and aggregate the four protocol metrics.
+    """Run the named-skill protocol on each task under each condition.
 
-    Returns (summary_df indexed by condition, list[ScaffoldTrace]). The traces
-    carry the full enumerate/choose/justify text for the report and dashboard.
+    Returns (summary_df indexed by condition, list[ScaffoldTrace]); the traces
+    carry the full text for the report and dashboard.
     """
     from . import metacog as MC
 
@@ -158,16 +134,13 @@ def metacog_eval(backend, tasks, model, lib,
     return summary, traces
 
 
-# --------------------------------------------------------------------------- #
-# 6. Real vs simulated pass rate on the same task slice
-# --------------------------------------------------------------------------- #
+# Real vs simulated pass rate on the same task slice
 def real_vs_sim(real_backend, sim_backend, tasks, real_model,
                 sim_model="qwen2.5-7b", n_trials=3):
     """Run the same tasks on a real open model and on the simulation backend.
 
-    Answers, honestly, whether the IRT calibration tracks real small-open-model
-    behaviour on the overlapping slice. Returns a DataFrame indexed by task with
-    columns real, sim, family.
+    Checks whether the IRT calibration tracks real behaviour on the overlapping
+    slice. Returns a DataFrame indexed by task with columns real, sim, family.
     """
     rows = {}
     for t in tasks:

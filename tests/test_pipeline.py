@@ -1,4 +1,4 @@
-"""Lightweight smoke tests: `python -m tests.test_pipeline` (no pytest needed)."""
+"""Smoke tests: `python -m tests.test_pipeline` (no pytest needed)."""
 
 from __future__ import annotations
 
@@ -26,14 +26,14 @@ def test_uid_format_and_determinism():
 
 
 def test_skillmix_metrics():
-    # k=3, all skills + all 3 criteria -> full marks
+    # all k skills + all 3 criteria: full marks
     assert ratio_full_marks(3, 3, 3) == 1
     assert ratio_all_skills(3, 3, 3) == 1
     assert skill_fraction(3, 3, 3) == 1.0
-    # all skills but one criterion slip -> All-Skills yes, Full-Marks no
+    # one criterion slip: All-Skills yes, Full-Marks no
     assert ratio_full_marks(3, 2, 3) == 0
     assert ratio_all_skills(3, 2, 3) == 1
-    # missing a skill, all criteria -> Skill Fraction = 2/3
+    # missing a skill, all criteria: Skill Fraction = 2/3
     assert abs(skill_fraction(2, 3, 3) - 2 / 3) < 1e-9
     assert ratio_all_skills(2, 3, 3) == 0
 
@@ -95,9 +95,9 @@ def test_metacog_post_beats_pre():
     b = SimulationBackend()
     lib = build_skill_library()
     summary, _ = metacog_eval(b, code_tasks()[:4], "qwen2.5-7b", lib)
-    # Before training the model cannot enumerate the named catalogue at all.
+    # Pre-training cannot enumerate the named catalogue at all.
     assert summary.loc["pre_training", "enumeration_recall"] == 0.0
-    # The catalogue lets it enumerate and select the gold skills.
+    # The catalogue lets post-training enumerate and select the gold skills.
     assert (summary.loc["post_training", "selection_accuracy"]
             > summary.loc["pre_training", "selection_accuracy"])
 
@@ -107,11 +107,11 @@ def test_cache_backend_records_and_replays():
     t0, t1 = code_tasks()[0], code_tasks()[1]
     rec = CachedBackend(inner=inner)
     tr1 = rec.solve("qwen2.5-7b", t0, 0, 0.0)
-    # Replay-only from the recorded cache, with no inner backend.
+    # Replay-only from the recorded cache, no inner backend.
     rep = CachedBackend(inner=None, cache=dict(rec.cache))
     tr2 = rep.solve("qwen2.5-7b", t0, 0, 0.0)
     assert tr1.task_uid == tr2.task_uid and tr1.passed == tr2.passed
-    # A miss in replay mode raises rather than silently calling a model.
+    # A miss in replay mode raises rather than calling a model.
     try:
         rep.solve("qwen2.5-7b", t1, 0, 0.0)
         raised = False

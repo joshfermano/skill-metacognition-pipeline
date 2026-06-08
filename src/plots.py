@@ -1,8 +1,7 @@
-"""
-Figures. Reproduces the three reference heatmap styles from the brief, plus a
-before/after self-improvement figure. All styling kept close to the references:
-sequential RdYlBu for pass rates (blue = high), Reds for co-failure, diverging
-RdBu_r centred at 0 for uplift deltas.
+"""Figures.
+
+Heatmaps and bar charts for the pipeline outputs. Colour maps: RdYlBu for pass
+rates (blue high), Reds for co-failure, RdBu centred at 0 for uplift deltas.
 """
 
 from __future__ import annotations
@@ -16,9 +15,7 @@ import seaborn as sns
 FIG = Path(__file__).resolve().parent.parent / "outputs" / "figures"
 FIG.mkdir(parents=True, exist_ok=True)
 sns.set_theme(style="white")
-# DejaVu Sans ships with matplotlib and carries the logical-symbol glyphs
-# (and, or, up-tack, negation) used by the natural-deduction skill labels;
-# Arial lacks them and renders boxes.
+# DejaVu Sans has the logical-symbol glyphs the ND labels need; Arial renders boxes.
 plt.rcParams["font.family"] = "DejaVu Sans"
 
 

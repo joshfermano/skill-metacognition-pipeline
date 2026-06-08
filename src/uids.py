@@ -1,11 +1,7 @@
-"""
-Deterministic Uint64 identifiers rendered as lowercase hex `xxxx-xxxx-xxxx-xxxx`.
+"""Deterministic Uint64 identifiers rendered as lowercase hex `xxxx-xxxx-xxxx-xxxx`.
 
-The assessment brief asks for skill UIDs and task UIDs as Uint64 in lowercase
-hex, grouped as four 16-bit fields. We derive the integer deterministically from
-the object's defining text (skill name, or task prompt) using BLAKE2b with an
-8-byte digest. Determinism matters: the same skill/task always maps to the same
-UID across runs and machines, so figures, tables and the report stay consistent.
+The UID is a BLAKE2b digest of the object's defining text, so the same skill or
+task maps to the same id across runs and machines.
 """
 
 from __future__ import annotations

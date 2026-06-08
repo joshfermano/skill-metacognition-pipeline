@@ -1,33 +1,12 @@
-"""
-Model backends.
+"""Model backends, open weights only, behind one `solve(task) -> Trajectory` interface.
 
-Every model in this project is open-source / open-weight. We never call a paid
-API. Three interchangeable backends implement one interface:
+  SimulationBackend  - deterministic IRT pass/fail, no GPU; the default so the
+                       pipeline reproduces with `python -m src.run_all`.
+  OllamaBackend      - local Ollama server, no API key.
+  HFBackend          - local transformers.
 
-  * SimulationBackend  - deterministic, dependency-light, runs anywhere (CI, a
-                         laptop, a reviewer's machine with no GPU). Pass/fail is
-                         drawn from an Item-Response-Theory (IRT) model whose
-                         parameters are calibrated to the magnitudes reported in
-                         the literature (see TECHNICAL_REPORT.md S5). This is the
-                         default so the whole pipeline + figures reproduce with
-                         `pip install -r requirements.txt && python -m src.run_all`.
-
-  * OllamaBackend      - talks to a local Ollama server (http://localhost:11434).
-                         Pull e.g. `ollama pull qwen2.5:3b-instruct`. No API key.
-
-  * HFBackend          - loads an open model with transformers locally.
-
-The interface is intentionally tiny: `solve(task) -> Trajectory` (a chain of
-thought + final answer) and `label_skill(text, skills) -> name`. Swapping the
-backend changes nothing else in the pipeline.
-
-WHY OPEN MODELS (transparency note, also in the report): (1) no paid API key is
-required to grade or reproduce the submission; (2) open weights make the
-evaluation fully auditable and deterministic given a seed; (3) the small open
-models used here (0.6B-7B) are exactly the regime the metacognition/skill papers
-target for cheap, scalable skill labelling and self-improvement; (4) the IRT
-simulation backend lets the methodology be demonstrated and the figures
-regenerated even on hardware without a GPU.
+OpenRouter and Groq gateways are defined further down. Swapping the backend
+changes nothing else in the pipeline.
 """
 
 from __future__ import annotations
@@ -37,10 +16,8 @@ from dataclasses import dataclass
 
 import numpy as np
 
-# Open-weight model roster. `ability` is the IRT latent ability theta used by the
-# simulation backend (logit scale). Values are an ordering calibrated so that the
-# capability ranking and the easy->hard gradient match the published figures;
-# they are NOT measured scores and are clearly labelled as simulation parameters.
+# Open-weight model roster. `ability` is the IRT latent theta (logit scale) used by
+# the simulation backend: a capability ordering, not measured scores.
 MODEL_ROSTER: dict[str, dict] = {
     "qwen3-0.6b":      {"ability": -0.9, "params_b": 0.6, "hf": "Qwen/Qwen3-0.6B"},
     "llama3.2-1b":     {"ability": -0.6, "params_b": 1.0, "hf": "meta-llama/Llama-3.2-1B-Instruct"},
@@ -51,8 +28,7 @@ MODEL_ROSTER: dict[str, dict] = {
     "qwen2.5-7b":      {"ability":  1.3, "params_b": 7.0, "hf": "Qwen/Qwen2.5-7B-Instruct"},
 }
 
-# The four small models used for the baseline-vs-uplift figure (matches the brief's
-# reference image exactly).
+# The four small models used for the baseline-vs-uplift figure.
 UPLIFT_MODELS = ["llama3.2-1b", "qwen2.5-1.5b", "qwen2.5-3b", "qwen3-0.6b"]
 
 
@@ -80,17 +56,10 @@ def sigmoid(x: float) -> float:
 class SimulationBackend:
     """Deterministic IRT pass-probability model.
 
-    P(pass) = sigmoid( a * (theta_model - b_task + uplift) )
-
-      theta_model : latent model ability (MODEL_ROSTER)
-      b_task      : task difficulty (set by tasks.py)
-      uplift      : skill effect when the curated skill is supplied (>=0 helps,
-                    <0 hurts: reproduces the SkillsBench finding that poor or
-                    self-generated skills can reduce performance)
-      a           : discrimination (slope)
-
-    Trials are independent Bernoulli draws seeded by (model, task, trial) so the
-    same configuration always yields the same outcomes.
+    P(pass) = sigmoid(a * (theta_model - b_task + uplift)), where a is the
+    discrimination slope, theta the model ability, b the task difficulty, and
+    uplift the curated-skill effect (>=0 helps, <0 hurts). Trials are Bernoulli
+    draws seeded by (model, task, trial), so a configuration always repeats.
     """
 
     def __init__(self, discrimination: float = 1.3, seed: int = 0):
@@ -109,8 +78,7 @@ class SimulationBackend:
 
     def solve(self, model: str, task, trial_idx: int = 0, uplift: float = 0.0) -> Trajectory:
         passed = self.trial(model, task.uid, task.difficulty, trial_idx, uplift)
-        # A schematic CoT that names the required skills (so skill-detection has
-        # signal). Real backends produce genuine reasoning text here.
+        # Schematic CoT naming the required skills, so skill-detection has signal.
         steps = [f"Step {i+1}: apply '{name}'." for i, name in enumerate(task.skill_names)]
         cot = " ".join(steps) + (" Therefore the answer follows." if passed
                                  else " ... the derivation stalls here.")
@@ -144,15 +112,13 @@ class OllamaBackend:
     def solve(self, model: str, task, trial_idx: int = 0, uplift: float = 0.0) -> Trajectory:
         from .grading import grade
         skill_hint = ""
-        if uplift > 0:  # curated-skill condition: inject the SKILL.md-style guidance
+        if uplift > 0:  # curated-skill condition
             skill_hint = "\n\nRelevant skills:\n" + "\n".join(f"- {n}" for n in task.skill_names)
         prompt = (f"Solve the problem. Think step by step, then give the final "
                   f"answer after 'ANSWER:'.{skill_hint}\n\nProblem: {task.prompt}")
         text = self._chat(model, prompt)
         cot, sep, ans = text.partition("ANSWER:")
-        # Reasoning models do not always emit the literal ANSWER: marker; when the
-        # marker is absent, grade against the whole response so a correct answer in
-        # the body is not scored as empty.
+        # No ANSWER: marker (common with reasoning models): grade the whole response.
         answer = ans.strip() if sep else text.strip()
         result = grade(task, answer, cot if sep else text)
         return Trajectory(task.uid, model, cot.strip(), answer,
@@ -188,10 +154,9 @@ class HFBackend:
                           result.passed, result.score, result.used_skills)
 
 
-# ---- OpenAI-compatible gateways (open-weight models) ----------------------- #
-# OpenRouter and Groq both expose an OpenAI-compatible /chat/completions endpoint
-# and serve open-WEIGHT models. They share one base class. Slugs/limits change;
-# verify at https://openrouter.ai/models and https://console.groq.com/docs/models.
+# OpenAI-compatible gateways (open-weight models)
+# OpenRouter and Groq share one base class. Slugs and limits change; verify at
+# https://openrouter.ai/models and https://console.groq.com/docs/models.
 
 OPENROUTER_SLUGS: dict[str, str] = {
     "qwen3-0.6b":   "qwen/qwen3-0.6b",
@@ -205,9 +170,8 @@ OPENROUTER_SLUGS: dict[str, str] = {
     "gpt-oss-20b":  "openai/gpt-oss-20b:free",
 }
 
-# Groq has no sub-8B models; map the small roster names onto the smallest Groq
-# option and provide capability-ordered open models for the grid. Free-tier RPD:
-# llama-3.1-8b-instant ~14,400; qwen3-32b / gpt-oss ~1,000; plan runs accordingly.
+# Groq has no sub-8B models, so small roster names fall back to the 8B option.
+# Free-tier RPD: llama-3.1-8b-instant ~14,400; qwen3-32b / gpt-oss ~1,000.
 GROQ_SLUGS: dict[str, str] = {
     "llama3.1-8b":  "llama-3.1-8b-instant",      # workhorse, highest RPD
     "qwen3-32b":    "qwen/qwen3-32b",
@@ -224,8 +188,8 @@ GROQ_SLUGS: dict[str, str] = {
 class _OpenAICompatBackend:
     """Shared base for OpenAI-compatible gateways (OpenRouter, Groq).
 
-    Subclasses set HOST, ENV_KEY, SLUGS, and RPM. Handles slug mapping, optional
-    request pacing (to respect requests-per-minute caps) and 429 backoff.
+    Subclasses set HOST, ENV_KEY, SLUGS, and RPM. Handles slug mapping, RPM pacing,
+    and 429 backoff.
     """
 
     HOST = ""
@@ -237,9 +201,7 @@ class _OpenAICompatBackend:
     def __init__(self, max_tokens: int = 700, temperature: float = 0.2):
         import os
         self.max_tokens = max_tokens
-        # Low default temperature so graded pass rates on the deterministic-gold
-        # tasks are stable across a real run; still leaves room in the scaffolding
-        # text. Override per instance if more diversity is wanted.
+        # Low default temperature keeps graded pass rates stable on a real run.
         self.temperature = temperature
         self.key = os.environ.get(self.ENV_KEY, "")
         self._last_call = 0.0
@@ -270,8 +232,7 @@ class _OpenAICompatBackend:
         }).encode()
         headers = {"Authorization": f"Bearer {self.key}",
                    "Content-Type": "application/json", "X-Title": "skill-metacognition-pipeline",
-                   # Both gateways sit behind Cloudflare, which 1010-blocks the default
-                   # Python-urllib User-Agent; a normal UA is required to be served.
+                   # Cloudflare 1010-blocks the default urllib UA, so send a normal one.
                    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
                                   "AppleWebKit/537.36 (KHTML, like Gecko) "
                                   "Chrome/124.0.0.0 Safari/537.36"),
@@ -287,8 +248,7 @@ class _OpenAICompatBackend:
                 if not choices:
                     raise RuntimeError(f"no choices: {str(data.get('error', data))[:160]}")
                 msg = choices[0].get("message") or {}
-                # Reasoning models may return content=null with the text in
-                # a separate reasoning field; fall back to it.
+                # Some reasoning models return content=null with text in `reasoning`.
                 return msg.get("content") or msg.get("reasoning") or ""
             except urllib.error.HTTPError as e:
                 if e.code == 429 and attempt < 4:
@@ -305,9 +265,7 @@ class _OpenAICompatBackend:
                   f"answer after 'ANSWER:'.{skill_hint}\n\nProblem: {task.prompt}")
         text = self._chat(model, prompt)
         cot, sep, ans = text.partition("ANSWER:")
-        # Reasoning models do not always emit the literal ANSWER: marker; when the
-        # marker is absent, grade against the whole response so a correct answer in
-        # the body is not scored as empty.
+        # No ANSWER: marker (common with reasoning models): grade the whole response.
         answer = ans.strip() if sep else text.strip()
         result = grade(task, answer, cot if sep else text)
         return Trajectory(task.uid, model, cot.strip(), answer,
@@ -315,8 +273,7 @@ class _OpenAICompatBackend:
 
 
 class OpenRouterBackend(_OpenAICompatBackend):
-    """OpenRouter gateway. Free key (no card): https://openrouter.ai/keys.
-    Free tier ~20 req/min, 50-1000 req/day -> prefer --scale small."""
+    """OpenRouter gateway. Free tier ~20 req/min, so prefer --scale small."""
     HOST = "https://openrouter.ai/api/v1"
     ENV_KEY = "OPENROUTER_API_KEY"
     SLUGS = OPENROUTER_SLUGS
@@ -324,8 +281,7 @@ class OpenRouterBackend(_OpenAICompatBackend):
 
 
 class GroqBackend(_OpenAICompatBackend):
-    """Groq LPU gateway, open models only. Free key (no card): console.groq.com.
-    Free tier 30 req/min, up to ~14,400 req/day on llama-3.1-8b-instant."""
+    """Groq gateway, open models only. Free tier 30 req/min."""
     HOST = "https://api.groq.com/openai/v1"
     ENV_KEY = "GROQ_API_KEY"
     SLUGS = GROQ_SLUGS
@@ -343,13 +299,11 @@ def get_backend(name: str = "simulation", **kw):
 class CachedBackend:
     """Record-and-replay wrapper around a real backend.
 
-    Every solve()/_chat() result is memoised to an on-disk JSON cache keyed by
-    its inputs. With `inner` set it calls the real model on a cache miss and
-    writes the result through; with `inner=None` it serves only from the cache
-    and raises on a miss. This lets a single real Groq run be committed to the
-    repo so the report and dashboard reproduce the real numbers and traces with
-    no API key (`python -m src.run_real --use-cache`). The API key is never part
-    of a cache key or value; only model outputs are stored.
+    solve()/_chat() results are memoised to an on-disk JSON cache keyed by their
+    inputs. With `inner` set, a miss calls the real model and writes through; with
+    `inner=None` it serves only from the cache and raises on a miss, so a committed
+    cache replays a real run with no key. The API key is never part of a cache key
+    or value; only model outputs are stored.
     """
 
     def __init__(self, inner=None, cache: dict | None = None):

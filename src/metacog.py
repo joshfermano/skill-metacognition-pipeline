@@ -1,32 +1,11 @@
-"""
-Metacognition scaffolding: the named-skill protocol from the task notes.
+"""Named-skill metacognition scaffolding: enumerate, choose, name-before-use, justify.
 
-The task notes (section "Start with named skills") ask for a specific
-metacognitive protocol once skills have been named:
-
-  * the model must STATE a skill's name before using it, in its chain of thought;
-  * before using a skill it must ENUMERATE the skills it could use here, LIST
-    them, then CHOOSE one from the list;
-  * it must EXPLAIN why it chose, if interrogated;
-  * enumeration is an *after-training* ability: before training the model does
-    not know the named skills, so it cannot enumerate them.
-
-This module implements that protocol as a real prompt-and-parse loop over the
-existing skill library and model backends, and an evaluation that contrasts two
-conditions:
-
-  pre_training  - no skill catalogue is supplied, so the model cannot name or
-                  enumerate the catalogue's skills (the "before training" state);
-  post_training - the catalogue is supplied in context, so the model can
-                  enumerate, choose, name-before-use, and justify.
-
-Supplying the catalogue in context is the standard skill-based-prompting proxy
-for the trained behaviour used by Didolkar et al. (2024, arXiv:2405.12205) and
-Kaur et al. (2024, arXiv:2408.14774); the genuine weight-update loop is
-pipeline.self_improvement (STaR-style best-of-n). Real backends (those exposing a
-`_chat` method, e.g. Groq, Ollama, OpenRouter) emit genuine enumerate/choose/
-justify text; the deterministic simulation backend emits a structured scaffold
-calibrated to the same protocol so the figure reproduces with no key.
+A prompt-and-parse loop over the skill library and model backends that contrasts
+two conditions: pre_training has no catalogue in context (the model cannot
+enumerate the named skills), post_training supplies it. Supplying the catalogue is
+a proxy for the trained behaviour; the genuine weight-update loop lives in
+pipeline.self_improvement. Real backends emit genuine text; the simulation backend
+emits a structured scaffold so the figure reproduces with no key.
 """
 
 from __future__ import annotations
@@ -37,16 +16,14 @@ from dataclasses import dataclass, field
 from .grading import detect_skills, grade
 
 
-# --------------------------------------------------------------------------- #
-# Catalogue rendering and name -> uid resolution
-# --------------------------------------------------------------------------- #
+# Catalogue rendering and name-to-uid resolution
 def _all_skills(lib: dict) -> list:
     return (list(lib.get("extracted", [])) + list(lib.get("natural_deduction", []))
             + list(lib.get("code", [])))
 
 
 def render_catalog(lib: dict) -> str:
-    """A numbered skill menu shown to the model in the post_training condition."""
+    """Numbered skill menu shown to the model in the post_training condition."""
     lines = []
     for i, s in enumerate(_all_skills(lib), 1):
         label = s.symbol if s.symbol else s.name
@@ -56,7 +33,7 @@ def render_catalog(lib: dict) -> str:
 
 
 def _name_index(lib: dict) -> dict[str, str]:
-    """Map every skill name / symbol (lowercased) to its uid, for parsing."""
+    """Map every lowercased skill name and symbol to its uid, for parsing."""
     idx: dict[str, str] = {}
     for s in _all_skills(lib):
         idx[s.name.lower()] = s.uid
@@ -72,16 +49,14 @@ def _resolve(token: str, lib: dict, name_idx: dict[str, str]) -> str | None:
         return None
     if t in name_idx:
         return name_idx[t]
-    # substring match against catalogue names (handles light paraphrase)
+    # substring match handles light paraphrase
     for s in _all_skills(lib):
         if s.name.lower() in t or (len(t) > 4 and t in s.name.lower()):
             return s.uid
     return None
 
 
-# --------------------------------------------------------------------------- #
 # Trace data structures
-# --------------------------------------------------------------------------- #
 @dataclass
 class ScaffoldStep:
     candidates: list[str]                       # enumerated candidate names
@@ -107,9 +82,7 @@ class ScaffoldTrace:
     interrogation: dict = field(default_factory=dict)  # {"question","answer","step"}
 
 
-# --------------------------------------------------------------------------- #
 # Prompt construction
-# --------------------------------------------------------------------------- #
 _PROTOCOL = (
     "Solve the problem step by step. For EACH step, follow this metacognitive "
     "protocol exactly:\n"
@@ -138,9 +111,7 @@ def build_prompt(task, lib: dict, condition: str) -> str:
     )
 
 
-# --------------------------------------------------------------------------- #
-# Parsing real model output into a structured scaffold
-# --------------------------------------------------------------------------- #
+# Parse real model output into a structured scaffold
 _STEP_RE = re.compile(r"^\s*step\s*\d+\s*:?", re.I)
 _FIELD_RE = re.compile(
     r"^\s*(candidate skills|chosen skill|why|apply)\s*:\s*(.*)$", re.I
@@ -187,8 +158,8 @@ def parse_scaffold(text: str, lib: dict) -> tuple[list[ScaffoldStep], str]:
         st.chosen_uid = _resolve(st.chosen, lib, name_idx) if st.chosen else None
         steps.append(st)
 
-    # Fallback: model ignored the format. Recover one degenerate step from the
-    # whole text using post-hoc detection so we still score it (low compliance).
+    # Fallback when the model ignored the format: recover one step from the whole
+    # text via post-hoc detection so it still scores (as low compliance).
     if not steps:
         cand = lib  # detect over the full catalogue
         used = detect_skills(text, _all_skills(cand))
@@ -198,9 +169,7 @@ def parse_scaffold(text: str, lib: dict) -> tuple[list[ScaffoldStep], str]:
     return steps, answer
 
 
-# --------------------------------------------------------------------------- #
 # Deterministic scaffold for the simulation backend
-# --------------------------------------------------------------------------- #
 def _hash01(*parts: str) -> float:
     import hashlib
     h = hashlib.blake2b("\x1f".join(parts).encode(), digest_size=8).digest()
@@ -210,11 +179,10 @@ def _hash01(*parts: str) -> float:
 def _simulate_text(model: str, task, lib: dict, condition: str, passed: bool) -> str:
     """Render protocol-shaped text whose structure depends on the condition.
 
-    post_training enumerates the gold skills (plus a distractor) and usually
-    chooses correctly; pre_training produces unstructured steps with no named
-    candidates, matching "the model does not know the skills before training".
-    `passed` (the IRT task outcome) only sets the final ANSWER line, so the
-    answer-correctness metric stays decoupled from protocol compliance.
+    post_training enumerates the gold skills plus a distractor and usually chooses
+    correctly; pre_training produces unstructured steps with no named candidates.
+    `passed` only sets the final ANSWER line, so answer-correctness stays decoupled
+    from protocol compliance.
     """
     gold_names = task.skill_names or [s.name for s in _all_skills(lib)[:1]]
     catalogue = _all_skills(lib)
@@ -230,7 +198,7 @@ def _simulate_text(model: str, task, lib: dict, condition: str, passed: bool) ->
     blocks = []
     for i, gname in enumerate(gold_names):
         distractor = catalogue[int(_hash01(task.uid, gname, "d") * len(catalogue))].name
-        # occasionally (deterministically) pick the wrong skill to avoid a trivial 100%
+        # deterministically miss sometimes, to avoid a trivial 100%
         miss = _hash01(model, task.uid, gname, "sel") < 0.15
         chosen = distractor if miss else gname
         blocks.append(
@@ -244,9 +212,7 @@ def _simulate_text(model: str, task, lib: dict, condition: str, passed: bool) ->
     return "\n".join(blocks) + f"\nANSWER: {ans}"
 
 
-# --------------------------------------------------------------------------- #
 # Solve one task under the scaffolding protocol
-# --------------------------------------------------------------------------- #
 def scaffold_solve(backend, model: str, task, lib: dict,
                    condition: str = "post_training") -> ScaffoldTrace:
     candidate_skills = _all_skills(lib)
@@ -256,9 +222,8 @@ def scaffold_solve(backend, model: str, task, lib: dict,
         result = grade(task, answer, raw, candidate_skills)
         passed, score = result.passed, result.score
     else:                                              # simulation
-        # The catalogue acts as a curated-skill uplift on the IRT task outcome,
-        # so answer-correctness reflects genuine task success, not the presence
-        # of skill names in the trace.
+        # Catalogue acts as a curated-skill uplift on the IRT outcome, so
+        # answer-correctness tracks task success, not skill names in the trace.
         uplift = 0.9 if condition == "post_training" else 0.0
         passed = backend.trial(model, task.uid, task.difficulty, 0, uplift=uplift)
         score = 1.0 if passed else round(_hash01(model, task.uid, "p") * 0.5, 3)
@@ -270,7 +235,7 @@ def scaffold_solve(backend, model: str, task, lib: dict,
 
 def interrogate(backend, model: str, task, trace: ScaffoldTrace,
                 step_idx: int = 0) -> ScaffoldTrace:
-    """Ask the model to justify a chosen skill (the task's 'interrogation')."""
+    """Ask the model to justify a chosen skill."""
     if not trace.steps:
         return trace
     step = trace.steps[min(step_idx, len(trace.steps) - 1)]
@@ -287,9 +252,7 @@ def interrogate(backend, model: str, task, trace: ScaffoldTrace,
     return trace
 
 
-# --------------------------------------------------------------------------- #
-# Scoring a trace against the task's gold skills
-# --------------------------------------------------------------------------- #
+# Score a trace against the task's gold skills
 def score_trace(trace: ScaffoldTrace, task) -> dict:
     gold = set(task.skill_uids)
     enumerated = set(u for st in trace.steps for u in st.candidate_uids)
