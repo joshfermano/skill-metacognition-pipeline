@@ -20,5 +20,5 @@ venv/
 # the report and the separate dashboard repo consume. Never commit secrets;
 # GROQ_API_KEY is read from the environment and is never written to any file.
 
-# Local Claude Code context, not part of the public repo
+# Local-only dev notes, not part of the public repo
 CLAUDE.md
